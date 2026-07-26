@@ -34,7 +34,7 @@ services:
     staticPublishPath: frontend/dist
     routes:
       # Same-origin proxy to the API service, mirroring nginx/Vite locally.
-      # Update the hostname if Render assigns a different service URL.
+      # Hostname is the URL Render actually assigned to the api service.
       - type: rewrite
         source: /api/*
-        destination: https://interview-prep-api.onrender.com/*
+        destination: https://interview-prep-api-3msj.onrender.com/*
