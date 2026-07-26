@@ -1,0 +1,104 @@
+[
+  {
+    "id": "bigquery-reduction",
+    "type": "grounded",
+    "question": "What was the BigQuery bytes-scanned reduction achieved by partitioning and clustering?",
+    "expected_answer": "58.7% (32,164 bytes scanned vs 77,856 for the flat table)",
+    "expected_project": "uk-retail-data-platform",
+    "retrieval_keywords": ["58.7"],
+    "answer_keywords": ["58.7"]
+  },
+  {
+    "id": "west-yorkshire-crime-count",
+    "type": "grounded",
+    "question": "How many crimes were recorded in West Yorkshire in February 2026?",
+    "expected_answer": "21,007 recorded crimes",
+    "expected_project": "uk-crime-data-pipeline",
+    "retrieval_keywords": ["21,007"],
+    "answer_keywords": ["21,007"]
+  },
+  {
+    "id": "crime-warehouse",
+    "type": "grounded",
+    "question": "Which data warehouse does the UK Crime Data Pipeline use, and how does it read from S3?",
+    "expected_answer": "DuckDB, reading S3 via the httpfs extension",
+    "expected_project": "uk-crime-data-pipeline",
+    "retrieval_keywords": ["DuckDB", "httpfs"],
+    "answer_keywords": ["DuckDB"]
+  },
+  {
+    "id": "discount-statistical-test",
+    "type": "grounded",
+    "question": "Which statistical test validated the discount revenue claim in the retail platform, and why was it chosen over a t-test?",
+    "expected_answer": "Mann-Whitney U test (non-parametric), chosen because both groups failed the Shapiro-Wilk normality check; p = 2.01e-05",
+    "expected_project": "uk-retail-data-platform",
+    "retrieval_keywords": ["Mann-Whitney"],
+    "answer_keywords": ["Mann-Whitney"]
+  },
+  {
+    "id": "retail-test-count",
+    "type": "grounded",
+    "question": "How many pytest tests does the Retail Data Platform have?",
+    "expected_answer": "159 tests, all passing",
+    "expected_project": "uk-retail-data-platform",
+    "retrieval_keywords": ["159"],
+    "answer_keywords": ["159"]
+  },
+  {
+    "id": "crime-dag-schedule",
+    "type": "grounded",
+    "question": "When does the crime pipeline's Airflow DAG run each month?",
+    "expected_answer": "On the 5th of every month (new data appears on the 5th of the following month)",
+    "expected_project": "uk-crime-data-pipeline",
+    "retrieval_keywords": ["5th"],
+    "answer_keywords": ["5th"]
+  },
+  {
+    "id": "corrupted-prices",
+    "type": "grounded",
+    "question": "How many products had corrupted price data in the retail platform, and how was it handled?",
+    "expected_answer": "354 products (11%) had £0 prices; detected and excluded during feature engineering",
+    "expected_project": "uk-retail-data-platform",
+    "retrieval_keywords": ["354"],
+    "answer_keywords": ["354"]
+  },
+  {
+    "id": "kafka-kraft",
+    "type": "grounded",
+    "question": "Why does the crime pipeline's Kafka setup use KRaft instead of Zookeeper?",
+    "expected_answer": "KRaft is the modern officially-supported single-binary setup and needs one fewer container for a single-node demo",
+    "expected_project": "uk-crime-data-pipeline",
+    "retrieval_keywords": ["KRaft"],
+    "answer_keywords": ["KRaft"]
+  },
+  {
+    "id": "optuna-clusters",
+    "type": "grounded",
+    "question": "What was the best number of clusters found by the Optuna study, and what was its silhouette score?",
+    "expected_answer": "n_clusters=3 with silhouette score 0.3417, matching the existing hardcoded N_CLUSTERS = 3",
+    "expected_project": "uk-retail-data-platform",
+    "retrieval_keywords": ["0.3417"],
+    "answer_keywords": ["0.3417"]
+  },
+  {
+    "id": "violence-share",
+    "type": "grounded",
+    "question": "What share of West Yorkshire's recorded crimes were violence and sexual offences?",
+    "expected_answer": "41% of all incidents (8,614 offences)",
+    "expected_project": "uk-crime-data-pipeline",
+    "retrieval_keywords": ["41%"],
+    "answer_keywords": ["41"]
+  },
+  {
+    "id": "offtopic-france",
+    "type": "no_result",
+    "question": "What is the capital of France?",
+    "expected_answer": "System should report no relevant information found, not answer from model priors"
+  },
+  {
+    "id": "offtopic-recipe",
+    "type": "no_result",
+    "question": "Give me a good recipe for chocolate chip cookies.",
+    "expected_answer": "System should report no relevant information found"
+  }
+]

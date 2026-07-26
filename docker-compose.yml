@@ -1,0 +1,32 @@
+# Full stack: FastAPI backend + nginx-served React frontend.
+#   docker compose up --build
+#   -> UI at http://localhost:8080, API only reachable through the frontend
+#      proxy (not published to the host directly).
+#
+# Secrets come from the local gitignored .env at runtime — they are never
+# baked into images (.dockerignore excludes .env from the build context).
+
+services:
+  api:
+    build: .
+    # format: raw stops compose from interpolating $-signs inside values —
+    # the bcrypt API_PASSWORD_HASH contains "$2b$12$..." which compose
+    # would otherwise mangle by treating "$..." as variable references.
+    env_file:
+      - path: .env
+        format: raw
+    expose:
+      - "8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      api:
+        condition: service_healthy

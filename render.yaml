@@ -1,0 +1,40 @@
+# Render blueprint — deployment PREP only; nothing has been deployed.
+# Platform choice rationale (2026): Render still has a genuinely free web
+# service tier (spins down after ~15 min idle) and free static hosting with
+# rewrite-proxying, without requiring a credit card. Railway's free tier is
+# now a one-time trial credit, and Fly.io requires a card for new orgs.
+#
+# HONEST RISK, stated up front: the free web service instance has 512 MB
+# RAM. torch + all-MiniLM-L6-v2 typically needs ~400-600 MB, so the API may
+# OOM on the free instance under load. If it does, the options are the
+# $7/mo starter instance or swapping the embedder to an ONNX runtime.
+# Test on free first — it may fit, but don't be surprised.
+
+services:
+  - type: web
+    name: interview-prep-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false # set in the Render dashboard, never committed
+      - key: JWT_SECRET_KEY
+        generateValue: true # Render generates a strong random value
+      - key: API_USERNAME
+        sync: false
+      - key: API_PASSWORD_HASH
+        sync: false # bcrypt hash — generate locally, paste into dashboard
+
+  - type: web
+    name: interview-prep-frontend
+    runtime: static
+    buildCommand: cd frontend && npm ci && npm run build
+    staticPublishPath: frontend/dist
+    routes:
+      # Same-origin proxy to the API service, mirroring nginx/Vite locally.
+      # Update the hostname if Render assigns a different service URL.
+      - type: rewrite
+        source: /api/*
+        destination: https://interview-prep-api.onrender.com/*

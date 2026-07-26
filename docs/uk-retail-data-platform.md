@@ -1,0 +1,624 @@
+# Retail Data Platform
+
+### A production-style data engineering system simulating how retailers process, analyse, and act on live sales data
+
+![CI](https://github.com/syedahmadbokhari/sql-data-analysis/actions/workflows/ci.yml/badge.svg)
+
+**Stack:** Python · SQL · Apache Airflow · PostgreSQL · dbt · Docker · Power BI · scikit-learn · Streamlit · pytest · GitHub Actions
+
+---
+
+## Power BI Dashboard
+
+![Power BI Dashboard](assets/dashboard_screenshot.png)
+*Revenue KPIs, brand share, discount category analysis, traffic trends, and top 10 products — built in Power BI on top of the pipeline output*
+
+---
+
+## Tableau Dashboard
+
+**[View the live dashboard on Tableau Public](https://public.tableau.com/app/profile/ahmad.bokhari/viz/Book1_17839796949070/RetailPerformanceDashboard)**
+
+![Tableau Dashboard](assets/tableau_dashboard.png.png)
+*Revenue by brand, top 10 products, monthly traffic trend, and discount impact — rebuilt in Tableau alongside the existing Power BI dashboard, using the same underlying analytics tables*
+
+The same core analysis (revenue by brand, product performance, discount impact, traffic trends) was independently rebuilt in Tableau to compare both BI platforms on identical data. Notably, Tableau's built-in filter actions and continuous date handling required a slightly different approach than Power BI's DAX-driven measures — a useful exercise in understanding how the same analytical logic translates across tools.
+
+---
+
+## Live Streamlit App
+
+**[View the live Streamlit app](https://sql-data-analysis-bisxvwilgc3ntxhken76wy.streamlit.app/)**
+
+*Interactive dashboard with product recommendation engine — deployed on Streamlit Cloud*
+
+---
+
+## What This System Does
+
+Most data projects analyse a static dataset and stop there. This platform simulates what happens in production: sales events arrive continuously, a pipeline wakes up, detects only the new data, processes it, and updates every downstream table — without ever touching data it has already seen.
+
+The result is a full-stack data platform covering event ingestion, layered transformation, automated quality checks, SQL-based business intelligence, and a content-based product recommendation engine — all orchestrated with Apache Airflow and deployable via Docker Compose.
+
+---
+
+## Executive Summary
+
+- **Adidas generates the majority of revenue** — over 93% of products in the catalogue are Adidas, with Nike products commanding a higher average listing price, suggesting a premium positioning strategy
+- **Discounted products drive significantly higher total revenue** than full-price items, indicating discount-led volume is the primary sales mechanism — a signal to review margin strategy
+- **Traffic peaked in 2019** before declining — correlating this with discount depth and revenue trends could identify whether promotional fatigue is reducing return visits
+- **354 products (11%) had corrupted price data (£0)** — discovered and automatically excluded during the feature engineering stage, preventing them from distorting the recommendation model
+- **The pipeline processes only new events on each run** — on a 1,650-event dataset it completes in under 1 second, demonstrating the efficiency of incremental over full-refresh approaches
+
+---
+
+## 📊 Business Insights & Recommendations
+
+<div align="center">
+  <img src="assets/revenue_by_brand.png" width="48%" alt="Revenue by Brand"/>
+  <img src="assets/top_products.png" width="48%" alt="Top Products by Revenue"/>
+</div>
+<div align="center">
+  <img src="assets/monthly_trend.png" width="60%" alt="Monthly Traffic Trend"/>
+</div>
+
+*Left: Revenue split by brand — Adidas dominates with Nike commanding a premium price point. Right: Top 10 products by total revenue. Bottom: Monthly traffic trend showing peak in 2019.*
+
+---
+
+### Revenue is highly concentrated in Adidas
+Adidas accounts for over 93% of products and the majority of revenue. **Action:** Diversify the brand mix or negotiate improved margin terms with Adidas given the platform's dependency on a single supplier.
+
+### Discounts are driving volume but at a cost
+Discounted products generate more total revenue than full-price items, meaning discount-led volume is the primary commercial lever. **Action:** This is now backed by a Mann-Whitney U test (p = 2.01e-05, see Statistical Validation below) rather than raw totals alone — though the effect size is small (r = 0.091), so the next step is still to analyse revenue per unit (not total revenue) by discount tier to confirm promotions are driving genuine incremental sales rather than cannibalising full-price purchases.
+
+### Traffic peaked and has since declined
+Monthly website visits peaked in 2019. **Action:** Cross-reference traffic decline with discount frequency — if promotional periods are the only traffic drivers, the business is training customers to wait for sales rather than buy at full price.
+
+### Product data quality issues exist at scale
+11% of products had corrupted pricing data. **Action:** Implement upstream data validation at the point of entry rather than relying on the pipeline to detect and discard bad rows downstream.
+
+---
+
+## 📈 Statistical Validation
+
+The Executive Summary and Business Insights above state that discounted products generate more total revenue than full-price items — but that claim was based on raw totals alone, which conflates "more products sold at a discount" with "each discounted product genuinely earns more." `src/analysis/statistical_tests.py` tests this rigorously at the per-product level, using revenue pulled from the `clean_finance` layer (3,120 products — 1,928 discounted, 1,192 full-price).
+
+<div align="center">
+  <img src="assets/discount_revenue_histograms.png" width="90%" alt="Revenue distribution by discount category"/>
+</div>
+<div align="center">
+  <img src="assets/discount_revenue_qqplots.png" width="90%" alt="Q-Q plots by discount category"/>
+</div>
+
+*Both distributions are heavily right-skewed with a long tail of high-revenue outliers — visible in the histograms and in both Q-Q plots curving well above the reference line, especially the ~£64k outlier in the Full Price group.*
+
+**Normality check (Shapiro-Wilk):**
+
+| Group | W statistic | p-value | Skew | Normal? |
+|-------|-------------|---------|------|---------|
+| Discounted | 0.867 | 1.20e-37 | 1.69 | No |
+| Full Price | 0.746 | 2.72e-39 | 2.49 | No |
+
+Both groups fail the normality check by a wide margin, so the module falls back to the **Mann-Whitney U test** (non-parametric) instead of a t-test.
+
+**Result:** U = 1,253,301.0, p = 2.01e-05, rank-biserial r = 0.091 (negligible-to-small effect).
+
+> Result: Mann-Whitney U test shows a statistically significant (negligible effect) difference in revenue between discounted and full-price products (p = 2.015e-05, U = 1253301.0). This confirms the discount-led revenue pattern observed in raw totals is not a distributional artifact — discounted products have a significantly higher typical per-product revenue than full-price products, so the discount-led revenue pattern is a real distributional effect and not just a byproduct of raw totals. Note: mean revenue is skewed by a small number of high-value outlier products (mean favors full-price products, median favors discounted products) — exactly why a rank-based test rather than a raw mean comparison is used here.
+
+**What this actually means:** the median discounted product earns £2,947.50 vs. £2,101.50 for full-price — consistent with the significant result and the original claim. But the *mean* tells the opposite story (£3,584 discounted vs. £4,545 full-price), because a handful of very high-revenue full-price products pull the average up. This is exactly the scenario hypothesis testing exists to catch: the raw-totals claim is directionally supported by the significance test, but the effect size is small, and a naive mean comparison alone would have told a misleading story driven by outliers rather than the typical product.
+
+---
+
+## 🧪 A/B Testing Methodology (Simulated)
+
+**This section demonstrates A/B test methodology using a SIMULATED experiment — it is not a claim that a live A/B test was run on real customers, website traffic, or transactions.** `src/analysis/ab_test_simulation.py` takes the same real per-product revenue values used above, discards the real historical discount status entirely, and randomly re-assigns every product to a "Treatment" or "Control" group with a fixed-seed 50/50 coin flip. Everything downstream — the test statistic, the p-value, the confidence interval — is real and genuinely computed on that simulated split; only the group assignment itself is synthetic.
+
+**How this differs from Statistical Validation above:** that section analyses *real, historical, non-randomized* data — the discount status reflects actual pricing decisions, so it can only show association, never a controlled experimental result. This section instead demonstrates the three pillars a real A/B test needs and observational analysis can't provide: **randomization**, an **a priori power analysis**, and a **significance test on the randomized groups**.
+
+**Sample size requirement (calculated, not assumed):** for a Cohen's d = 0.5 ("medium") minimum detectable effect at α = 0.05 and 80% power, `statsmodels`' `TTestIndPower` solver returns **64 per group** — this matches the standard Cohen (1988) textbook reference value for these inputs, cross-checked directly in the test suite.
+
+**Real result from an actual run:**
+
+```
+Simulated assignment (seed=42): 1,573 Treatment, 1,547 Control
+Required sample size per group: 64  |  Achieved: 1,547 per group (well-powered)
+t = -1.528, p = 0.1266, Cohen's d = -0.055
+Result: not statistically significant
+```
+
+No significant difference was found between the randomly-assigned groups — which is the **statistically correct expectation**, not a disappointing result: since assignment was pure chance with no real intervention behind it, there is no real effect for the test to find. Had this run come back significant instead, that would be a false positive (a Type I error, expected in roughly 5% of runs by construction under α = 0.05) rather than a genuine discovery — the module's summary function is written to say so explicitly rather than presenting a lucky random split as a finding, and this is verified in the test suite.
+
+---
+
+## 📊 Excel Analysis Deliverable
+
+`src/analysis/export_excel_workbook.py` generates a native Excel workbook — **[exports/Retail_Data_Platform_Analysis.xlsx](exports/Retail_Data_Platform_Analysis.xlsx)** — as a standalone business-analyst-style deliverable, pulling real numbers from the same clean/analytics layer as the rest of the pipeline rather than pasting static exports:
+
+| Sheet | Contents |
+|-------|----------|
+| **Summary** | Plain-language executive summary tying together brand concentration, the statistically validated discount finding, and the pricing model — written for a non-technical stakeholder |
+| **Raw Data** | 3,120 rows of real per-product data (product, brand, listing price, discount, revenue) joined from the clean layer — the source range for pivoting |
+| **Revenue by Brand** | Live-computed brand revenue table + a native (genuinely interactive, not an image) bar chart |
+| **Discount Impact** | Live-computed average/median revenue by discount category + native bar chart, with a cell comment carrying the actual `statistical_tests.py` result (Mann-Whitney U, p = 2.01e-05) |
+| **Pricing Opportunity Model** | A real Excel formula chain (`=B6-B5`, `=B7*B4*B10`, `=B14/12`) projecting annual/monthly revenue impact — every cell is clickable and auditable, not a pasted-in number |
+
+**What's fully automated vs. what needs a manual step:** the row-level data, aggregate tables, native charts, formulas, and the cell comment carrying the real statistical result are all generated by the script. One thing is **not** automated: openpyxl [does not support authoring new native Excel PivotTable objects from scratch](https://openpyxl.readthedocs.io/en/stable/pivot.html) — it can only preserve pivot tables that already exist in a file. Rather than fake a static table styled to look like a PivotTable, the Revenue by Brand and Discount Impact sheets ship the real aggregate + chart, with a note pointing to the two-click manual step for a true interactive PivotTable: select the Raw Data sheet, **Insert > PivotTable**.
+
+---
+
+## ☁️ Data Warehousing (BigQuery)
+
+This platform's PostgreSQL/SQLite abstraction (`src/utils/db.py`) extends to a third, cloud data-warehouse backend: when `GOOGLE_CLOUD_PROJECT` is set, BigQuery-specific scripts connect via `google-cloud-bigquery` instead. Existing PostgreSQL/SQLite code paths are untouched — this is a **local (SQLite) → CI (SQLite) → cloud warehouse (BigQuery)** three-mode story, not a replacement.
+
+| Script | Purpose |
+|--------|---------|
+| `src/etl/bigquery_setup.py` | Defines the BigQuery dataset/table schemas — the partitioned+clustered fact table and the five analytics marts |
+| `src/etl/migrate_to_bigquery.py` | Idempotently loads the active backend's clean/analytics data into BigQuery (`WRITE_TRUNCATE` — safe to re-run, mirrors the `if_exists="replace"` pattern already used in `aggregate.py`) |
+| `src/analysis/bigquery_cost_comparison.py` | Dry-run bytes-scanned comparison between the optimised table and a deliberately unoptimised copy |
+
+**What was partitioned/clustered, and why:**
+- `fact_sales_events` is **partitioned BY DATE(event_timestamp)** — every representative query filters on a date range ("revenue in the last N days"), and native date partitioning lets BigQuery skip entire days outside that range instead of scanning the whole table.
+- The same table is **clustered on `product_id`** rather than `brand`. Clustering only helps on high-cardinality filter columns — `brand` has just 2 distinct values in this dataset, far too low for block pruning to matter, while `product_id` (~3,120 distinct values) is the fact table's own natural key and exactly what per-product lookups filter on.
+- The five `analytics_*` mart tables are **not** partitioned or clustered — they're small aggregates (one row per brand/product/month/category), so there's no scan to prune.
+
+**Cost comparison — real, verified result:**
+
+```
+Representative date window (from real data): 2026-04-28 to 2026-04-30
+Partitioned + clustered : 32,164 bytes scanned
+Flat (no optimisation)  : 77,856 bytes scanned
+Reduction               : 58.7%
+```
+
+Run with `python -m src.analysis.bigquery_cost_comparison` against a live GCP project, using BigQuery's dry-run feature — these are real bytes-scanned figures from BigQuery's own query planner, not estimates, and no query cost was incurred to obtain them.
+
+**How this number was validated, not just accepted:** the first run of this script reported a 100% reduction (0 bytes vs. 77,856 bytes), which turned out to be a bug, not a win — the demo query's date filter was computed as `datetime.date.today() - 30 days`, but `fact_sales_events` is a static, one-time-generated dataset (a real ~6-day burst of events, not a continuously arriving feed). Enough real time had passed since generation that the filter no longer overlapped the table's actual dates at all, so BigQuery's partition pruning correctly reported 0 bytes for a query matching zero partitions — a legitimate dry-run answer, but a misleading one to cite as a partitioning win. The fix anchors the date window to the table's own actual `MAX(event_timestamp)` at run time instead of wall-clock time (3 regression tests lock this in), and the 58.7% figure above is the result after that fix, confirmed against live data.
+
+**Caveat on clustering:** at this dataset's scale (~3,150 rows total, ~1,050 rows in the 3-day query window), clustering's contribution is hard to isolate from partitioning's — a table this small likely fits within one or a handful of storage blocks per partition regardless of cluster ordering, so block-level pruning has little left to do. Partitioning is the lever genuinely demonstrated by the 58.7% figure above; clustering on `product_id` is expected to matter far more once this table holds production-scale volumes (many GB per partition), where it isn't practical to demonstrate on a portfolio-sized synthetic dataset.
+
+---
+
+## 🆚 Cloud Data Warehouse Comparison (BigQuery vs Snowflake)
+
+Snowflake is added as a **second, independent** cloud warehouse option — `SNOWFLAKE_ACCOUNT` selects it in `src/utils/db.py`, the same env-var-driven pattern as BigQuery's `GOOGLE_CLOUD_PROJECT`. This does not replace BigQuery; the two coexist so the same data and query pattern can be compared across platforms honestly, rather than just picking one and asserting it's the "cloud-ready" choice.
+
+| Script | Purpose |
+|--------|---------|
+| `src/etl/snowflake_setup.py` | Defines the same fact + 5 mart tables as `bigquery_setup.py`, clustered instead of partitioned |
+| `src/etl/migrate_to_snowflake.py` | Idempotently loads the active local backend's data into Snowflake (`write_pandas(..., overwrite=True)`) |
+| `src/analysis/snowflake_cost_comparison.py` | Real-execution partitions-scanned/bytes-scanned comparison, using `INFORMATION_SCHEMA.QUERY_HISTORY()` |
+
+**These are genuinely different mechanisms, not a syntax swap of the same idea:**
+
+| | BigQuery | Snowflake |
+|---|---|---|
+| Partitioning | A separate, explicit mechanism — `PARTITION BY DATE(event_timestamp)` prunes whole day-partitions | **Doesn't exist as a separate concept.** Every table is auto-divided into micro-partitions (~50–500MB uncompressed each) regardless of configuration |
+| Clustering | A second, independent mechanism — `CLUSTER BY product_id` sorts within partitions | The *only* mechanism — `CLUSTER BY (event_timestamp, product_id)` is defined once, doing the job BigQuery splits across two features |
+| Clustering maintenance cost | Free, folded into background storage optimisation | **Not free** — Snowflake's Automatic Clustering service re-sorts micro-partitions as data changes, and this background service itself consumes credits (Snowflake's own docs note you can suspend it "to control cost") |
+| Cost model | Pay per bytes scanned ($6.25/TiB on-demand), a **free dry-run** estimates this with zero execution | Pay per warehouse-size × time (e.g. X-Small = 1 credit/hour, billed per-second, 60s minimum) — **no free dry-run equivalent exists** |
+| How this repo measures efficiency | `job_config.dry_run=True` — real bytes-scanned figures, zero query cost | Query must actually **run** on a warehouse, then `INFORMATION_SCHEMA.QUERY_HISTORY()` reports real `partitions_scanned`/`partitions_total`/`bytes_scanned`/elapsed time — a small, real, unavoidable cost, not a script limitation |
+
+**Why the fact table is clustered on `(event_timestamp, product_id)` together, not split:** every representative query filters on both a date range and a specific `product_id` (the same query `bigquery_cost_comparison.py` uses). BigQuery hands the date filter to partitioning and the product filter to clustering; Snowflake has nowhere else to send the date filter, so the same clustering key has to serve both — date first (coarser, more selective at this table's size), product_id second.
+
+**Honest status:** this code is written and unit-tested (21 tests, mocked `snowflake.connector` client — no live account needed), following the exact same idempotency and "anchor the date window to real data, not `datetime.date.today()`" fix `bigquery_cost_comparison.py` needed after catching a real bug — applied here from day one instead of re-making that mistake. It has **not** been run against a live Snowflake account: this repo has no Snowflake trial set up, and per this project's rule against fabricated numbers, no partitions-scanned or cost figures are reported here yet. Unlike the BigQuery comparison, running this one for real will incur a small, real, unavoidable warehouse-credit cost — there's no free dry-run path to fall back on.
+
+---
+
+## 🧪 Model Tracking (MLflow)
+
+`src/tune_clusters.py`'s Optuna hyperparameter search for the K-means product clustering (see [Engineering Challenges](#engineering-challenges-solved) and `src/clustering.py`) previously only ever printed its results to the console — no history, no saved model, nothing to compare between runs. Every trial is now logged as its own MLflow run: the tuned parameter (`n_clusters`), the optimisation metric (`silhouette_score`), and the fitted `KMeans` model itself as a versioned artifact.
+
+**What's tracked, and why:**
+- **Parameter:** `n_clusters` (Optuna's search space: 2–8)
+- **Metric:** silhouette score (the same metric Optuna optimises for)
+- **Artifact:** the fitted `KMeans` model for every trial, not just the winner — so any trial can be inspected or reloaded later, not only reasoned about from a printed number
+
+**Real result from a live run (20 trials):** the best trial found `n_clusters=3` (silhouette = 0.3417) — which happens to match `clustering.py`'s existing hardcoded `N_CLUSTERS = 3`, a genuine (if modest) confirmation that the original choice was already optimal for this dataset, not just convenient.
+
+**Best-model registration:** after the study finishes, the run with the highest silhouette score is registered as a new version of `kmeans_cluster_model` in MLflow's Model Registry and tagged `stage=production` — a single, unambiguous record of which version is meant to be used, rather than a printed line in a terminal no one saved.
+
+**Comparing runs — genuinely runnable, not just described:**
+```bash
+python -m src.tune_clusters           # runs the study, logs every trial, registers the best
+python -m src.compare_mlflow_runs      # prints every logged trial, sorted best-first
+mlflow ui --backend-store-uri sqlite:///mlruns/mlflow.db   # full interactive UI
+```
+
+**The cosine similarity recommender was NOT integrated — honestly, not by oversight.** `src/recommender.py`'s `build_similarity_matrix()` is a fully deterministic calculation (`StandardScaler` + `cosine_similarity` over a fixed feature list) with no hyperparameters, no randomness, and nothing to search or compare between runs. Forcing MLflow tracking onto it would mean logging the same fixed inputs and outputs every time — tracking for its own sake, not because there's anything genuinely versionable. If the feature set or a similarity threshold ever became tunable, this would be revisited.
+
+**A known gap, not hidden:** `clustering.py`'s `build_clusters()` still uses its own hardcoded `N_CLUSTERS = 3` rather than automatically loading the registered `kmeans_cluster_model` from the Model Registry — the tuning study and the production clustering pipeline are not yet wired together. That they currently agree (3 clusters) is a useful confirmation, not a substitute for closing that gap.
+
+**Tracking store:** a local SQLite file (`mlruns/mlflow.db`), not a remote server — consistent with this project's local/CI-friendly philosophy. MLflow's plain filesystem store (`file:./mlruns`) is in maintenance mode as of MLflow 3.x and no longer supports the Model Registry, so SQLite is the local-only option that still does.
+
+---
+
+## ❓ Key Business Questions Answered
+
+- Which products are generating the most revenue, and how concentrated is that revenue?
+- Are discounts increasing total revenue or reducing margins by cannibalising full-price sales?
+- Which brands dominate the catalogue and what does that mean for supplier dependency?
+- How does website traffic trend across months — and does it correlate with promotional activity?
+- Do higher-rated products generate more revenue than lower-rated ones?
+- Which products are underperforming relative to their listing price?
+
+---
+
+## 🧠 SQL Analysis
+
+This project answers business questions using SQL queries built on top of the analytics layer. The pipeline pre-aggregates data into five analytics tables — the queries below run against those tables for fast, repeatable results.
+
+```sql
+-- Top 10 products by revenue with revenue rank
+SELECT product_name,
+       SUM(modified_revenue)                                         AS total_revenue,
+       RANK() OVER (ORDER BY SUM(modified_revenue) DESC)            AS revenue_rank
+FROM finance f
+JOIN info i ON f.product_id = i.product_id
+GROUP BY i.product_name
+ORDER BY revenue_rank
+LIMIT 10;
+```
+
+```sql
+-- Discount impact: revenue share by discount category
+SELECT CASE WHEN modified_discount > 0 THEN 'Discounted' ELSE 'Full Price' END AS category,
+       SUM(modified_revenue)                                                      AS total_revenue,
+       ROUND(SUM(modified_revenue) * 100.0 / SUM(SUM(modified_revenue)) OVER (), 1) AS pct_of_total
+FROM finance
+GROUP BY category
+ORDER BY total_revenue DESC;
+```
+
+```sql
+-- Monthly traffic with month-over-month change
+SELECT month,
+       visit_count,
+       visit_count - LAG(visit_count) OVER (ORDER BY month) AS mom_change
+FROM (
+    SELECT SUBSTR(modified_last_visited, 1, 7) AS month,
+           COUNT(*) AS visit_count
+    FROM traffic
+    GROUP BY month
+) monthly
+ORDER BY month;
+```
+
+---
+
+## The Problem This Solves
+
+### The situation
+A retailer has sales data arriving constantly. Their analytics team needs up-to-date revenue figures, discount impact analysis, and product recommendations — but rebuilding everything from scratch on every pipeline run is slow, expensive, and risky.
+
+### The solution
+This platform separates the data into two streams:
+
+- **Static catalogue data** (products, brands, pricing) — ingested once, refreshed only when the source changes
+- **Live sales events** — appended continuously, with only new events processed on each run
+
+A watermark table records the timestamp of the last processed event. On every run, the pipeline reads only what's new, aggregates it, and merges the result into the analytics layer. Re-running the pipeline produces identical output — it is safe to repeat at any time.
+
+---
+
+## System Overview
+
+For a non-technical audience, here is what happens end to end:
+
+```
+New sales transactions arrive
+        ↓
+Pipeline detects only the transactions it hasn't seen yet
+        ↓
+Data is validated, cleaned, and standardised
+        ↓
+Business metrics are calculated (revenue, discounts, traffic)
+        ↓
+SQL transformation layer (dbt) builds reporting tables
+        ↓
+Machine learning layer builds a product similarity model
+        ↓
+Dashboard displays live metrics and product recommendations
+```
+
+Each step only runs if there is something new to process. Every step is safe to repeat. If any step fails a quality check, the pipeline stops and nothing downstream is affected.
+
+---
+
+## Architecture
+
+![Architecture Diagram](assets/architecture_diagram.png)
+*End-to-end data platform: event ingestion → incremental processing → transformation layers → machine learning → dashboard serving*
+
+<details>
+<summary>View detailed pipeline flow (ASCII)</summary>
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     EVENT GENERATION LAYER                       │
+│  src/data_generator/generate_events.py                          │
+│  → Generates N synthetic sales events per run                   │
+│  → Appends to fact_sales_events (UUID event_id, forward ts)     │
+└──────────────────────────┬──────────────────────────────────────┘
+                           │
+          ┌────────────────┴────────────────┐
+          ▼                                 ▼
+┌─────────────────────┐         ┌─────────────────────┐
+│  STATIC INGEST      │         │  INCREMENTAL INGEST  │
+│  ingest.py          │         │  ingest_events.py    │
+│  finance/brands/    │         │  WHERE event_ts >    │
+│  info/reviews/      │         │  last watermark      │
+│  traffic → raw_*    │         │  → raw_events_agg.   │
+└─────────────────────┘         └──────────┬──────────┘
+          │                                │
+          └────────────────┬───────────────┘
+                           ▼
+              ┌────────────────────────┐
+              │  QUALITY GATE          │
+              │  validate_raw_layer()  │
+              │  row counts, null rate │
+              └────────────┬───────────┘
+                           ▼
+              ┌────────────────────────┐
+              │  CLEAN LAYER           │
+              │  clean.py              │
+              │  raw_* → clean_*       │
+              └────────────┬───────────┘
+                           ▼
+              ┌────────────────────────┐
+              │  ANALYTICS LAYER       │
+              │  aggregate.py          │
+              │  clean_* → analytics_* │
+              └────────────┬───────────┘
+                           ▼
+              ┌────────────────────────┐
+              │  dbt (PostgreSQL only) │
+              │  staging views +       │
+              │  mart tables + tests   │
+              └────────────┬───────────┘
+                           ▼
+              ┌────────────────────────┐
+              │  QUALITY GATE          │
+              │  validate_marts()      │
+              └────────────┬───────────┘
+                           ▼
+              ┌────────────────────────┐
+              │  FEATURE ENGINEERING   │
+              │  features_products     │
+              └────────────┬───────────┘
+                           ▼
+              ┌────────────────────────┐
+              │  RECOMMENDATION MODEL  │
+              │  cosine similarity     │
+              └────────────┬───────────┘
+                           ▼
+              ┌────────────────────────┐
+              │  STREAMLIT DASHBOARD   │
+              └────────────────────────┘
+```
+
+</details>
+
+### Layer Explanations
+
+| Layer | Tables | What it does |
+|-------|--------|--------------|
+| **Events** | `fact_sales_events` | Append-only log of every sale — never updated, only added to |
+| **Raw** | `raw_finance`, `raw_brands`, `raw_info`, `raw_reviews`, `raw_traffic`, `raw_events_aggregated` | Exact copies of source data — no transformations, preserves the original |
+| **Clean** | `clean_finance`, `clean_brands`, `clean_info`, `clean_reviews`, `clean_traffic` | Type-corrected, null-handled, validated — safe to query |
+| **Analytics** | `analytics_brand_revenue`, `analytics_product_revenue`, `analytics_monthly_traffic`, `analytics_discount_impact`, `analytics_event_revenue` | Pre-aggregated business metrics ready for dashboards |
+| **Features** | `features_products` | ML-ready product vectors: log-transformed revenue, median-imputed ratings, label-encoded brands |
+| **Watermarks** | `pipeline_watermarks`, `event_ingestion_watermark` | State tracking — records what has been processed so runs are incremental |
+
+---
+
+## Incremental Pipeline in Practice
+
+The pipeline tracks the highest event timestamp it has processed. On each run it queries only events after that timestamp — processing zero rows if nothing has changed.
+
+| Run | Events Generated | Events Processed | Cumulative Total | Products Updated |
+|-----|-----------------|-----------------|-----------------|-----------------|
+| Baseline | — | — | 0 | 0 |
+| Run 1 | 200 | 200 | 200 | 193 |
+| Run 2 | 150 | 150 | 350 | 333 |
+| Run 3 | 100 | 100 | 450 | 425 |
+| Re-run (no new data) | 0 | **0** | 450 | 0 ✓ |
+
+The re-run row confirms idempotency — running the pipeline twice produces the same result as running it once. This is a critical property for production pipelines where failures and retries are expected.
+
+---
+
+## Engineering Challenges Solved
+
+### 1. Incremental processing without double-counting
+**Problem:** Full table scans on every run are slow and wasteful. Naive incremental logic can miss events or count them twice.
+
+**Solution:** A dedicated `event_ingestion_watermark` table stores the maximum processed `event_timestamp`. Each run queries `WHERE event_timestamp > watermark`, then advances the watermark only after a successful write. Forward-only timestamp jitter on event generation guarantees new batches always land after the previous watermark.
+
+### 2. Idempotent writes on a mixed-cardinality dataset
+**Problem:** The product catalogue (`raw_reviews`) contains duplicate `product_id` values — standard UPSERT logic would fail. The events table (`raw_events_aggregated`) is guaranteed unique by aggregation.
+
+**Solution:** Two separate ingest patterns — snapshot replace (`if_exists="replace"`) for catalogue tables, and explicit UPSERT with `INSERT ... ON CONFLICT DO UPDATE` for aggregated event data. The unique index required by SQLite's ON CONFLICT is created explicitly only on tables where uniqueness is guaranteed.
+
+### 3. Data quality failures silently degrading the model
+**Problem:** 354 products had a listing price of £0 in the source data. Filling missing review counts with 0 caused products with no review data to appear identical in the feature space, producing ~100% cosine similarity for large groups.
+
+**Solution:** Zero-price rows are detected and dropped with a logged warning. Missing values are imputed with column medians rather than zero. Rating values of 0 (indicating missing data, not a genuine 0-star product) are replaced with the median before model training. Revenue is log-transformed to reduce right-skew before scaling.
+
+### 4. Environment portability without code changes
+**Problem:** Production pipelines run on PostgreSQL. Local development and CI should not require a running database server.
+
+**Solution:** `src/utils/db.py` checks for a `DB_HOST` environment variable at runtime. When present it connects to PostgreSQL via psycopg2. When absent it falls back to a local SQLite file. The same SQL, the same ORM calls, and the same tests work in both environments without any code changes.
+
+---
+
+## Use Cases by Role
+
+### Data Engineer
+- Incremental ETL with watermark-based state tracking
+- Dual-database portability (PostgreSQL / SQLite) via environment-driven engine selection
+- Idempotent UPSERT pattern using `INSERT ... ON CONFLICT DO UPDATE`
+- Apache Airflow DAG with parallel tasks, quality gates, retries, and graceful dbt degradation
+- Docker Compose stack: Airflow 2.8 + PostgreSQL 15 + custom image with dbt-postgres
+- 159-test pytest suite with mocked DB connections for isolated unit testing
+- GitHub Actions CI running the full test suite on every push
+
+### Data Analyst
+- Advanced SQL: CTEs, window functions (`RANK()`, `SUM() OVER()`), aggregations
+- Five pre-built analytics tables covering revenue, discounts, traffic, and product performance
+- dbt staging views with data type casting, string normalisation, and European decimal handling
+- dbt mart tables with `not_null`, `unique`, and `accepted_values` schema tests
+- Live Streamlit dashboard with revenue KPIs, brand comparison, discount analysis, and traffic trends
+
+### ML Engineer
+- Feature engineering pipeline with median imputation, log transformation, and label encoding
+- StandardScaler normalisation before cosine similarity to prevent high-magnitude features from dominating
+- Content-based recommendation: 2,766-product similarity matrix built from 6 product features
+- Data quality assertions (`assert`) in the feature pipeline for fail-fast validation
+- `@st.cache_resource` model serving pattern — built once per server session, instant for all users
+
+---
+
+## Technology Stack
+
+| Layer | Technology | Purpose |
+|-------|-----------|---------|
+| **Event Simulation** | Python, UUID, Pandas | Synthetic sales event generation |
+| **Databases** | PostgreSQL 15, SQLite | Production and local/CI environments |
+| **ORM** | SQLAlchemy 2.x, psycopg2 | Dual-mode database abstraction |
+| **ETL** | Python, Pandas | Ingestion, cleaning, aggregation |
+| **SQL Transformations** | dbt-core, dbt-postgres | Staging views and mart tables |
+| **Orchestration** | Apache Airflow 2.8 | DAG scheduling, retries, quality gates |
+| **Containerisation** | Docker Compose | Full-stack local deployment |
+| **Machine Learning** | scikit-learn | StandardScaler, cosine similarity |
+| **Statistics** | scipy.stats | Hypothesis testing (normality, t-test/Mann-Whitney U), effect size |
+| **Experimental Design** | statsmodels | A/B test power analysis, sample size calculation |
+| **Data Warehousing** | Google BigQuery, Snowflake | Partitioned/clustered (BQ) vs. clustered-only (Snowflake) fact tables; dry-run (BQ) vs. QUERY_HISTORY (Snowflake) cost comparison |
+| **Model Tracking** | MLflow | Optuna trial logging, model artifacts, Model Registry |
+| **Dashboard** | Streamlit | Live interactive analytics |
+| **Testing** | pytest, unittest.mock | 159 unit tests, mocked DB layer |
+| **CI/CD** | GitHub Actions | Automated test runs on every push |
+| **Logging** | Python logging | Structured logs to console and file |
+
+---
+
+## Quick Start
+
+```bash
+pip install -r requirements.txt
+pip install -r requirements-dev.txt
+
+# Run the full pipeline (generates events, ingests, cleans, aggregates, builds model)
+python pipeline/run_pipeline.py
+
+# Launch the dashboard
+streamlit run app.py
+
+# Run tests
+pytest
+```
+
+### Docker — full Airflow + PostgreSQL stack
+
+```bash
+cp .env.example .env
+docker compose up --build
+# Airflow UI → http://localhost:8080  (admin / admin)
+# Trigger DAG: retail_pipeline
+```
+
+### What happens when the pipeline runs
+
+1. 200 synthetic sales events are generated and appended to `fact_sales_events`
+2. Only events after the last watermark timestamp are read and aggregated
+3. The product catalogue is checked — skipped entirely if unchanged
+4. Raw data is validated (row counts, null rates) — pipeline aborts if checks fail
+5. Clean tables are rebuilt with type corrections and null handling
+6. Five analytics tables are computed from the clean layer
+7. dbt runs staging views and mart tables on PostgreSQL; skips gracefully on SQLite
+8. The feature table is rebuilt with median imputation and log-transformed revenue
+9. The cosine similarity matrix is computed and cached for the dashboard
+
+Total runtime on a 1,650-event dataset: **under 1 second**.
+
+---
+
+## Project Structure
+
+```
+├── .github/workflows/ci.yml        # GitHub Actions — pytest on every push
+├── docker-compose.yml              # Airflow + PostgreSQL full stack
+├── docker/
+│   ├── Dockerfile.airflow          # Custom Airflow image with dbt-postgres
+│   └── init-db.sql                 # Creates retail DB on first Postgres boot
+├── data/
+│   └── retailDB.sqlite             # All pipeline layers in one file (local/CI)
+├── dbt/
+│   ├── models/staging/             # SQL views: type casting, normalisation
+│   └── models/marts/               # SQL tables: business metrics + schema tests
+├── src/
+│   ├── data_generator/             # Synthetic sales event generator
+│   ├── utils/                      # DB abstraction, logging, validation, watermarks
+│   ├── etl/                        # Ingest, clean, aggregate
+│   ├── features/                   # Feature engineering pipeline
+│   └── recommender.py              # Cosine similarity model
+├── pipeline/
+│   ├── run_pipeline.py             # Local 7-step runner
+│   └── dags/retail_pipeline.py    # Airflow DAG — 10 tasks
+├── tests/                          # 159 unit tests
+└── app.py                          # Streamlit dashboard
+```
+
+---
+
+## Airflow DAG — 10 Tasks
+
+![Airflow DAG](assets/DAG_diagram.png)
+*10-task Airflow DAG: parallel ingestion → quality gates → transformation → ML layer*
+
+- `generate_events` and `ingest_raw` run **in parallel** — they are independent sources
+- Two quality gates abort downstream tasks if row counts or null rates exceed thresholds
+- `dbt_run` checks for PostgreSQL and the dbt binary — skips gracefully in SQLite/CI mode
+- All tasks configured with `retries=2`, `retry_delay=3min`
+
+---
+
+## Testing — 159 Tests, All Passing
+
+```bash
+pytest
+# 159 passed
+```
+
+| File | Tests | Coverage |
+|------|-------|----------|
+| `test_clean.py` | 24 | European decimal conversion, discount clipping, null dropping, type validation |
+| `test_bigquery_setup.py` | 21 | Partitioning/clustering config, idempotent load (WRITE_TRUNCATE), graceful skip without credentials, date window anchored to real data not wall-clock time |
+| `test_snowflake_setup.py` | 21 | Clustering-key DDL, idempotent load (`overwrite=True`), graceful skip without credentials, date window anchored to real data |
+| `test_statistical_tests.py` | 19 | Normality check structure, test selection logic, effect size correctness on known synthetic data |
+| `test_ab_test_simulation.py` | 18 | Randomization balance/reproducibility, power calculation vs. Cohen (1988) reference, effect detection on manufactured data, honest/simulated-labeled summaries |
+| `test_features.py` | 14 | Median imputation, zero-price row removal, brand encoding, column structure |
+| `test_clustering.py` | 13 | Cluster label assignment, determinism, empty-input handling |
+| `test_recommender.py` | 13 | Self-exclusion, score ordering, score range, unknown product handling |
+| `test_export_excel_workbook.py` | 10 | Valid workbook output, sheet names/order, native charts, real (non-hardcoded) formulas |
+| `test_mlflow_tracking.py` | 6 | Per-trial param/metric/model logging, best-run selection, Model Registry registration + tagging, graceful empty-experiment handling |
+
+All tests mock the database layer (and the BigQuery client) — no database or cloud connection required to run the suite.
+
+---
+
+## Future Improvements
+
+| Improvement | Why |
+|-------------|-----|
+| **Kafka event streaming** | Replace the synthetic generator with a real Kafka producer/consumer to handle genuinely continuous event ingestion |
+| **MLflow model tracking** | Version the similarity model and track feature distributions over time — currently the model is rebuilt on every pipeline run with no history |
+| **Redis caching** | Cache recommendation results for popular products to reduce compute on the dashboard server |
+| **Great Expectations / Soda** | Replace the hand-written validation layer with a dedicated data quality framework for richer checks and observability |
+| **REST API** | Expose recommendations via a FastAPI endpoint so other services can consume them without the Streamlit layer |
+
+---
+
+## Author
+
+**Ahmad Bokhari**

@@ -1,0 +1,12 @@
+# Never bake secrets or local state into the image
+.env
+.venv/
+index/
+__pycache__/
+.pytest_cache/
+frontend/
+tests/
+evaluation/results.json
+*.md
+!docs/*.md
+.git/

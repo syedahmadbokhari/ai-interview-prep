@@ -1,0 +1,13 @@
+sentence-transformers>=3.0
+faiss-cpu>=1.8
+groq>=0.13
+numpy
+pytest>=8.0
+
+# Phase 2 — API layer
+fastapi>=0.115
+uvicorn[standard]>=0.30
+PyJWT>=2.9
+bcrypt>=4.1
+slowapi>=0.1.9
+httpx  # FastAPI TestClient dependency

@@ -1,0 +1,308 @@
+{
+  "summary": {
+    "retrieval_accuracy": "10/10",
+    "answer_faithfulness": "10/10",
+    "honest_refusals": "2/2",
+    "generation_ran": true
+  },
+  "cases": [
+    {
+      "id": "bigquery-reduction",
+      "type": "grounded",
+      "question": "What was the BigQuery bytes-scanned reduction achieved by partitioning and clustering?",
+      "retrieved": [
+        {
+          "citation": "uk-retail-data-platform > ☁️ Data Warehousing (BigQuery) (part 2)",
+          "score": 0.539
+        },
+        {
+          "citation": "uk-retail-data-platform > 🆚 Cloud Data Warehouse Comparison (BigQuery vs Snowflake) (part 2)",
+          "score": 0.528
+        },
+        {
+          "citation": "uk-retail-data-platform > ☁️ Data Warehousing (BigQuery) (part 1)",
+          "score": 0.419
+        },
+        {
+          "citation": "uk-retail-data-platform > 🆚 Cloud Data Warehouse Comparison (BigQuery vs Snowflake) (part 3)",
+          "score": 0.405
+        }
+      ],
+      "retrieval_hit": true,
+      "retrieval_keyword_found": true,
+      "expected_project_retrieved": true,
+      "answer": "The BigQuery bytes-scanned reduction achieved by partitioning and clustering was 58.7%. This reduction was measured by comparing the bytes scanned for a representative date window query on a partitioned and clustered table (32,164 bytes) versus a flat, unoptimized table (77,856 bytes).\n\nSources: uk-retail-data-platform > ☁️ Data Warehousing (BigQuery) (part 2); uk-retail-data-platform > ☁️ Data Warehousing (BigQuery) (part 1)",
+      "grounded": true,
+      "answer_hit": true
+    },
+    {
+      "id": "west-yorkshire-crime-count",
+      "type": "grounded",
+      "question": "How many crimes were recorded in West Yorkshire in February 2026?",
+      "retrieved": [
+        {
+          "citation": "uk-crime-data-pipeline > Business Context",
+          "score": 0.672
+        },
+        {
+          "citation": "uk-crime-data-pipeline > Key Analytics",
+          "score": 0.671
+        },
+        {
+          "citation": "uk-crime-data-pipeline > Data Source",
+          "score": 0.543
+        },
+        {
+          "citation": "uk-crime-data-pipeline > 6. Download more data (requires internet)",
+          "score": 0.458
+        }
+      ],
+      "retrieval_hit": true,
+      "retrieval_keyword_found": true,
+      "expected_project_retrieved": true,
+      "answer": "According to the project documentation, West Yorkshire had **21,007 recorded crimes in February 2026 alone**.\nSources: uk-crime-data-pipeline > Business Context; uk-crime-data-pipeline > Key Analytics",
+      "grounded": true,
+      "answer_hit": true
+    },
+    {
+      "id": "crime-warehouse",
+      "type": "grounded",
+      "question": "Which data warehouse does the UK Crime Data Pipeline use, and how does it read from S3?",
+      "retrieved": [
+        {
+          "citation": "uk-crime-data-pipeline > Data Source",
+          "score": 0.688
+        },
+        {
+          "citation": "uk-crime-data-pipeline > Business Context",
+          "score": 0.67
+        },
+        {
+          "citation": "uk-crime-data-pipeline > Architecture",
+          "score": 0.666
+        },
+        {
+          "citation": "uk-crime-data-pipeline > Pipeline Components",
+          "score": 0.633
+        }
+      ],
+      "retrieval_hit": true,
+      "retrieval_keyword_found": true,
+      "expected_project_retrieved": true,
+      "answer": "The UK Crime Data Pipeline uses DuckDB as its data warehouse. DuckDB reads data from S3 via the httpfs extension, which allows it to access S3 without needing Redshift.\n\nSources: [uk-crime-data-pipeline > Architecture]",
+      "grounded": true,
+      "answer_hit": true
+    },
+    {
+      "id": "discount-statistical-test",
+      "type": "grounded",
+      "question": "Which statistical test validated the discount revenue claim in the retail platform, and why was it chosen over a t-test?",
+      "retrieved": [
+        {
+          "citation": "uk-retail-data-platform > 🧪 A/B Testing Methodology (Simulated) (part 1)",
+          "score": 0.65
+        },
+        {
+          "citation": "uk-retail-data-platform > 📈 Statistical Validation (part 2)",
+          "score": 0.64
+        },
+        {
+          "citation": "uk-retail-data-platform > 📈 Statistical Validation (part 1)",
+          "score": 0.603
+        },
+        {
+          "citation": "uk-retail-data-platform > Discounts are driving volume but at a cost",
+          "score": 0.563
+        }
+      ],
+      "retrieval_hit": true,
+      "retrieval_keyword_found": true,
+      "expected_project_retrieved": true,
+      "answer": "The Mann-Whitney U test validated the discount revenue claim in the retail platform. It was chosen over a t-test because both the discounted and full-price product revenue distributions failed the normality check by a wide margin, as indicated by the Shapiro-Wilk test results (p-values of 1.20e-37 and 2.72e-39, respectively). This non-normality of the data made the non-parametric Mann-Whitney U test a more suitable choice than a parametric t-test.\n\nSources: [uk-retail-data-platform > 📈 Statistical Validation (part 1)]; [uk-retail-data-platform > 📈 Statistical Validation (part 2)]",
+      "grounded": true,
+      "answer_hit": true
+    },
+    {
+      "id": "retail-test-count",
+      "type": "grounded",
+      "question": "How many pytest tests does the Retail Data Platform have?",
+      "retrieved": [
+        {
+          "citation": "uk-retail-data-platform > Testing — 159 Tests, All Passing",
+          "score": 0.549
+        },
+        {
+          "citation": "uk-retail-data-platform > Data Engineer",
+          "score": 0.51
+        },
+        {
+          "citation": "uk-retail-data-platform > 🧪 A/B Testing Methodology (Simulated) (part 1)",
+          "score": 0.489
+        },
+        {
+          "citation": "uk-crime-data-pipeline > Running Tests",
+          "score": 0.475
+        }
+      ],
+      "retrieval_hit": true,
+      "retrieval_keyword_found": true,
+      "expected_project_retrieved": true,
+      "answer": "The Retail Data Platform has 159 pytest tests, all of which are passing.\n\nSources: [uk-retail-data-platform > Testing — 159 Tests, All Passing]; [uk-retail-data-platform > Data Engineer]",
+      "grounded": true,
+      "answer_hit": true
+    },
+    {
+      "id": "crime-dag-schedule",
+      "type": "grounded",
+      "question": "When does the crime pipeline's Airflow DAG run each month?",
+      "retrieved": [
+        {
+          "citation": "uk-crime-data-pipeline > In the pipeline",
+          "score": 0.558
+        },
+        {
+          "citation": "uk-crime-data-pipeline > Architecture",
+          "score": 0.553
+        },
+        {
+          "citation": "uk-crime-data-pipeline > Business Context",
+          "score": 0.522
+        },
+        {
+          "citation": "uk-crime-data-pipeline > 8. Run with Docker Compose (Airflow + Streamlit)",
+          "score": 0.513
+        }
+      ],
+      "retrieval_hit": true,
+      "retrieval_keyword_found": true,
+      "expected_project_retrieved": true,
+      "answer": "The crime pipeline's Airflow DAG runs on the 5th of every month.\n\nSources: [uk-crime-data-pipeline > Architecture]",
+      "grounded": true,
+      "answer_hit": true
+    },
+    {
+      "id": "corrupted-prices",
+      "type": "grounded",
+      "question": "How many products had corrupted price data in the retail platform, and how was it handled?",
+      "retrieved": [
+        {
+          "citation": "uk-retail-data-platform > Product data quality issues exist at scale",
+          "score": 0.722
+        },
+        {
+          "citation": "uk-retail-data-platform > 3. Data quality failures silently degrading the model",
+          "score": 0.589
+        },
+        {
+          "citation": "uk-retail-data-platform > The situation",
+          "score": 0.544
+        },
+        {
+          "citation": "uk-retail-data-platform > Executive Summary",
+          "score": 0.542
+        }
+      ],
+      "retrieval_hit": true,
+      "retrieval_keyword_found": true,
+      "expected_project_retrieved": true,
+      "answer": "354 products had corrupted price data, which was indicated by a listing price of £0. This issue was handled by detecting and dropping these zero-price rows with a logged warning during the data processing stage, preventing them from distorting the recommendation model.\n\nSources: [uk-retail-data-platform > 3. Data quality failures silently degrading the model]; [uk-retail-data-platform > Executive Summary]",
+      "grounded": true,
+      "answer_hit": true
+    },
+    {
+      "id": "kafka-kraft",
+      "type": "grounded",
+      "question": "Why does the crime pipeline's Kafka setup use KRaft instead of Zookeeper?",
+      "retrieved": [
+        {
+          "citation": "uk-crime-data-pipeline > Running it",
+          "score": 0.654
+        },
+        {
+          "citation": "uk-crime-data-pipeline > What it adds, and why it's a separate path from the batch pipeline",
+          "score": 0.521
+        },
+        {
+          "citation": "uk-retail-data-platform > Future Improvements",
+          "score": 0.453
+        },
+        {
+          "citation": "uk-crime-data-pipeline > Real-Time Streaming (Kafka)",
+          "score": 0.426
+        }
+      ],
+      "retrieval_hit": true,
+      "retrieval_keyword_found": true,
+      "expected_project_retrieved": true,
+      "answer": "The crime pipeline's Kafka setup uses KRaft instead of Zookeeper because it's the modern, officially-supported single-binary setup (Kafka ≥ 3.7's `apache/kafka` image), and one fewer container than a Zookeeper-based broker for a single-node demo.\n\nSources: uk-crime-data-pipeline > Running it",
+      "grounded": true,
+      "answer_hit": true
+    },
+    {
+      "id": "optuna-clusters",
+      "type": "grounded",
+      "question": "What was the best number of clusters found by the Optuna study, and what was its silhouette score?",
+      "retrieved": [
+        {
+          "citation": "uk-retail-data-platform > 🧪 Model Tracking (MLflow) (part 1)",
+          "score": 0.469
+        }
+      ],
+      "retrieval_hit": true,
+      "retrieval_keyword_found": true,
+      "expected_project_retrieved": true,
+      "answer": "The best number of clusters found by the Optuna study was `n_clusters=3`, with a silhouette score of `0.3417`.\n\nSources: [uk-retail-data-platform > 🧪 Model Tracking (MLflow) (part 1)]",
+      "grounded": true,
+      "answer_hit": true
+    },
+    {
+      "id": "violence-share",
+      "type": "grounded",
+      "question": "What share of West Yorkshire's recorded crimes were violence and sexual offences?",
+      "retrieved": [
+        {
+          "citation": "uk-crime-data-pipeline > Key Analytics",
+          "score": 0.69
+        },
+        {
+          "citation": "uk-crime-data-pipeline > Business Context",
+          "score": 0.648
+        },
+        {
+          "citation": "uk-crime-data-pipeline > Data Source",
+          "score": 0.492
+        },
+        {
+          "citation": "uk-crime-data-pipeline > 6. Download more data (requires internet)",
+          "score": 0.397
+        }
+      ],
+      "retrieval_hit": true,
+      "retrieval_keyword_found": true,
+      "expected_project_retrieved": true,
+      "answer": "According to the provided data, violence and sexual offences accounted for 41% of all recorded crimes in West Yorkshire.\n\nSources: uk-crime-data-pipeline > Key Analytics; uk-crime-data-pipeline > Business Context",
+      "grounded": true,
+      "answer_hit": true
+    },
+    {
+      "id": "offtopic-france",
+      "type": "no_result",
+      "question": "What is the capital of France?",
+      "retrieved": [],
+      "retrieval_returned_chunks": false,
+      "answer": "No relevant information was found in the indexed project documentation for this question, so I won't attempt an answer.",
+      "grounded": false,
+      "honest_refusal": true
+    },
+    {
+      "id": "offtopic-recipe",
+      "type": "no_result",
+      "question": "Give me a good recipe for chocolate chip cookies.",
+      "retrieved": [],
+      "retrieval_returned_chunks": false,
+      "answer": "No relevant information was found in the indexed project documentation for this question, so I won't attempt an answer.",
+      "grounded": false,
+      "honest_refusal": true
+    }
+  ]
+}
