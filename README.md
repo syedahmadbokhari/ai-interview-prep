@@ -5,9 +5,13 @@ grounded in — and cited against — their real README documentation.
 
 **Phase 1:** a working, tested, evaluated RAG backend (below).
 **Phase 2:** a JWT-protected FastAPI layer wrapping it (see [API Layer](#api-layer)).
-**Phase 3:** a React frontend, Docker Compose stack, and deployment prep
+**Phase 3:** a React frontend, Docker Compose stack, and deployment
 (see [Frontend](#frontend), [Running the Full Stack](#running-the-full-stack-docker-compose),
-[Deployment](#deployment) — **not yet deployed anywhere public**).
+[Deployment](#deployment)).
+
+**Live demo:** https://interview-prep-frontend-xwk1.onrender.com
+(free tier — the backend sleeps when idle, so the first request after a
+break can take a minute to wake it).
 
 Knowledge base (in `docs/`, pulled from the real GitHub repos):
 
@@ -292,8 +296,14 @@ docker compose up --build
 
 ## Deployment
 
-**Status: NOT deployed.** Nothing public exists; no accounts were created.
-This section is the prepared path for when/if I choose to go live.
+**Status: LIVE** (deployed 2026-07-26 via the Render blueprint below).
+Frontend: https://interview-prep-frontend-xwk1.onrender.com · API:
+https://interview-prep-api-3msj.onrender.com (JWT-protected; only /health
+is public). Verified post-deploy with the same Playwright round-trip used
+locally: real login, the BigQuery question answered with the documented
+58.7% figure and cited sources, off-topic question refused. The 512 MB
+free-instance RAM risk flagged below did NOT materialize — the service
+builds and serves within the free tier.
 
 **Platform: Render** ([render.yaml](render.yaml)). Rationale (2026):
 Render still offers a genuinely free web-service tier (spins down after
