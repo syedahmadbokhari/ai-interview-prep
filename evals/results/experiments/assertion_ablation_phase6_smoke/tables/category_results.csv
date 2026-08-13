@@ -1,0 +1,2 @@
+name,adversarial_refusal_rate,comparative_mean,correction_rate,count,fact_coverage_mean,faithfulness_mean,latency_ms_mean,latency_ms_std,model_calls_mean,multi_hop_mean,project_entity_mean,retry_count_mean,safe_fallback_rate,tool_calls_mean
+single_hop,,,0.0,16,1.0,1.0,23.615000000000002,11.793751523582308,1.75,,0.5,0,0.0,0.875

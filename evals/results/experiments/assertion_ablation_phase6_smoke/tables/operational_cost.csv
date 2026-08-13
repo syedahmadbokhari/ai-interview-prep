@@ -1,0 +1,9 @@
+name,latency_mean,latency_median,latency_p95,tool_calls_mean,model_calls_mean,retry_rate,safe_fallback_rate
+agent_no_assertions,22.4,22.4,25.496,1.0,2.0,0.0,0.0
+agent_with_assertions,26.380000000000003,26.380000000000003,28.576,1.0,2.0,0.0,0.0
+agent_without_dates_grounded,28.115000000000002,28.115000000000002,30.576500000000003,1.0,2.0,0.0,0.0
+agent_without_metrics_grounded,25.07,25.07,25.753999999999998,1.0,2.0,0.0,0.0
+agent_without_project_exists,28.85,28.85,34.259,1.0,2.0,0.0,0.0
+agent_without_scope_bounded,23.045,23.045,23.382500000000004,1.0,2.0,0.0,0.0
+agent_without_technology_grounded,35.06,35.06,50.72,1.0,2.0,0.0,0.0
+pipeline,0.0,0.0,0.0,0.0,0.0,0.0,0.0

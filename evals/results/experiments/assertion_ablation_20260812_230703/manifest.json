@@ -1,0 +1,29 @@
+{
+  "experiment": "phase5_assertion_ablation",
+  "dataset_version": "interview_prep_v1",
+  "dataset_path": "evals\\datasets\\interview_prep_v1.jsonl",
+  "timestamp": "2026-08-12T23:07:21.239608+00:00",
+  "mode": "mock",
+  "configurations": [
+    "pipeline",
+    "agent_no_assertions",
+    "agent_with_assertions",
+    "agent_without_project_exists",
+    "agent_without_technology_grounded",
+    "agent_without_metrics_grounded",
+    "agent_without_dates_grounded",
+    "agent_without_scope_bounded"
+  ],
+  "runs": 1,
+  "category_filter": null,
+  "assertion_filter": null,
+  "retrieval_settings": {
+    "index_dir": "index"
+  },
+  "git_commit": "d478bbe96f1e666e137149b500469df5427983bf",
+  "python_version": "3.11.9",
+  "dataset_size": 43,
+  "scoring_version": "1",
+  "live_ablation_executed": false,
+  "mock_notice": "MOCK INFRASTRUCTURE VALIDATION ONLY"
+}

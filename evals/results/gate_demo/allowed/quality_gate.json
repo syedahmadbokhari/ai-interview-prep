@@ -1,0 +1,135 @@
+{
+  "passed": true,
+  "policy": "pr_gate",
+  "checks": [
+    {
+      "name": "dataset_size",
+      "status": "PASS",
+      "reason": "Expected dataset size 43.",
+      "current": 43,
+      "baseline": 43,
+      "delta": null,
+      "allowed_regression": null
+    },
+    {
+      "name": "configuration_present.pipeline",
+      "status": "PASS",
+      "reason": "Required configuration must be present.",
+      "current": [
+        "agent_no_assertions",
+        "agent_with_assertions",
+        "pipeline"
+      ],
+      "baseline": null,
+      "delta": null,
+      "allowed_regression": null
+    },
+    {
+      "name": "configuration_present.agent_no_assertions",
+      "status": "PASS",
+      "reason": "Required configuration must be present.",
+      "current": [
+        "agent_no_assertions",
+        "agent_with_assertions",
+        "pipeline"
+      ],
+      "baseline": null,
+      "delta": null,
+      "allowed_regression": null
+    },
+    {
+      "name": "configuration_present.agent_with_assertions",
+      "status": "PASS",
+      "reason": "Required configuration must be present.",
+      "current": [
+        "agent_no_assertions",
+        "agent_with_assertions",
+        "pipeline"
+      ],
+      "baseline": null,
+      "delta": null,
+      "allowed_regression": null
+    },
+    {
+      "name": "non_empty_evaluation",
+      "status": "PASS",
+      "reason": "Configuration aggregates exist.",
+      "current": null,
+      "baseline": null,
+      "delta": null,
+      "allowed_regression": null
+    },
+    {
+      "name": "compatibility.dataset_version",
+      "status": "PASS",
+      "reason": "Current run must be compatible with approved baseline.",
+      "current": "interview_prep_v1",
+      "baseline": "interview_prep_v1",
+      "delta": null,
+      "allowed_regression": null
+    },
+    {
+      "name": "compatibility.scoring_version",
+      "status": "PASS",
+      "reason": "Current run must be compatible with approved baseline.",
+      "current": "1",
+      "baseline": "1",
+      "delta": null,
+      "allowed_regression": null
+    },
+    {
+      "name": "minimum.agent_with_assertions.adversarial_refusal_rate",
+      "status": "PASS",
+      "reason": "Metric must be >= 1.0.",
+      "current": 1.0,
+      "baseline": 1.0,
+      "delta": null,
+      "allowed_regression": null
+    },
+    {
+      "name": "regression.pipeline.fact_coverage_mean",
+      "status": "PASS",
+      "reason": "Metric must not regress by more than 0.001.",
+      "current": 0.743686046511628,
+      "baseline": 0.7441860465116279,
+      "delta": -0.0004999999999999449,
+      "allowed_regression": 0.001
+    },
+    {
+      "name": "regression.agent_no_assertions.fact_coverage_mean",
+      "status": "PASS",
+      "reason": "Metric must not regress by more than 0.001.",
+      "current": 0.7441860465116279,
+      "baseline": 0.7441860465116279,
+      "delta": 0.0,
+      "allowed_regression": 0.001
+    },
+    {
+      "name": "regression.agent_with_assertions.adversarial_refusal_rate",
+      "status": "PASS",
+      "reason": "Metric must not regress by more than 0.001.",
+      "current": 1.0,
+      "baseline": 1.0,
+      "delta": 0.0,
+      "allowed_regression": 0.001
+    },
+    {
+      "name": "regression.agent_with_assertions.faithfulness_mean",
+      "status": "PASS",
+      "reason": "Metric must not regress by more than 0.05.",
+      "current": 0.5813953488372093,
+      "baseline": 0.5813953488372093,
+      "delta": 0.0,
+      "allowed_regression": 0.05
+    },
+    {
+      "name": "cross_config.agent_with_assertions.adversarial_refusal_rate.>=.agent_no_assertions.adversarial_refusal_rate",
+      "status": "PASS",
+      "reason": "Expected agent_with_assertions.adversarial_refusal_rate >= agent_no_assertions.adversarial_refusal_rate with tolerance 0.0.",
+      "current": 1.0,
+      "baseline": 0.0,
+      "delta": null,
+      "allowed_regression": 0.0
+    }
+  ]
+}

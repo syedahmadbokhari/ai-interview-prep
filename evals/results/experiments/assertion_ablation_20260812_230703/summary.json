@@ -1,0 +1,280 @@
+{
+  "metadata": {
+    "experiment": "phase5_assertion_ablation",
+    "dataset_version": "interview_prep_v1",
+    "dataset_path": "evals\\datasets\\interview_prep_v1.jsonl",
+    "timestamp": "2026-08-12T23:07:21.239608+00:00",
+    "mode": "mock",
+    "configurations": [
+      "pipeline",
+      "agent_no_assertions",
+      "agent_with_assertions",
+      "agent_without_project_exists",
+      "agent_without_technology_grounded",
+      "agent_without_metrics_grounded",
+      "agent_without_dates_grounded",
+      "agent_without_scope_bounded"
+    ],
+    "runs": 1,
+    "category_filter": null,
+    "assertion_filter": null,
+    "retrieval_settings": {
+      "index_dir": "index"
+    },
+    "git_commit": "d478bbe96f1e666e137149b500469df5427983bf",
+    "python_version": "3.11.9",
+    "dataset_size": 43,
+    "scoring_version": "1",
+    "live_ablation_executed": false,
+    "mock_notice": "MOCK INFRASTRUCTURE VALIDATION ONLY"
+  },
+  "aggregates": {
+    "by_configuration": {
+      "agent_no_assertions": {
+        "count": 43,
+        "fact_coverage_mean": 0.7441860465116279,
+        "faithfulness_mean": 0.7674418604651163,
+        "project_entity_mean": 0.5813953488372093,
+        "multi_hop_mean": 0.9166666666666666,
+        "comparative_mean": 1.0,
+        "adversarial_refusal_rate": 0.0,
+        "latency_ms_mean": 31.566511627906976,
+        "latency_ms_std": 8.452566937401924,
+        "tool_calls_mean": 1.4186046511627908,
+        "model_calls_mean": 2,
+        "retry_count_mean": 0,
+        "correction_rate": 0.0,
+        "safe_fallback_rate": 0.0
+      },
+      "agent_with_assertions": {
+        "count": 43,
+        "fact_coverage_mean": 0.5813953488372093,
+        "faithfulness_mean": 0.5813953488372093,
+        "project_entity_mean": 0.4883720930232558,
+        "multi_hop_mean": 0.3333333333333333,
+        "comparative_mean": 0.3333333333333333,
+        "adversarial_refusal_rate": 1.0,
+        "latency_ms_mean": 52.82139534883721,
+        "latency_ms_std": 20.566295138585858,
+        "tool_calls_mean": 1.4186046511627908,
+        "model_calls_mean": 2.6511627906976742,
+        "retry_count_mean": 0.6511627906976745,
+        "correction_rate": 0.6511627906976745,
+        "safe_fallback_rate": 0.4186046511627907
+      },
+      "agent_without_dates_grounded": {
+        "count": 43,
+        "fact_coverage_mean": 0.5813953488372093,
+        "faithfulness_mean": 0.5813953488372093,
+        "project_entity_mean": 0.4883720930232558,
+        "multi_hop_mean": 0.3333333333333333,
+        "comparative_mean": 0.3333333333333333,
+        "adversarial_refusal_rate": 1.0,
+        "latency_ms_mean": 64.83093023255815,
+        "latency_ms_std": 16.310040966961722,
+        "tool_calls_mean": 1.4186046511627908,
+        "model_calls_mean": 2.6511627906976742,
+        "retry_count_mean": 0.6511627906976745,
+        "correction_rate": 0.6511627906976745,
+        "safe_fallback_rate": 0.4186046511627907
+      },
+      "agent_without_metrics_grounded": {
+        "count": 43,
+        "fact_coverage_mean": 0.7209302325581395,
+        "faithfulness_mean": 0.7209302325581395,
+        "project_entity_mean": 0.5581395348837209,
+        "multi_hop_mean": 0.4166666666666667,
+        "comparative_mean": 0.5555555555555556,
+        "adversarial_refusal_rate": 1.0,
+        "latency_ms_mean": 65.4839534883721,
+        "latency_ms_std": 17.414755590501592,
+        "tool_calls_mean": 1.4186046511627908,
+        "model_calls_mean": 2.511627906976744,
+        "retry_count_mean": 0.5116279069767442,
+        "correction_rate": 0.5116279069767442,
+        "safe_fallback_rate": 0.27906976744186046
+      },
+      "agent_without_project_exists": {
+        "count": 43,
+        "fact_coverage_mean": 0.6395348837209303,
+        "faithfulness_mean": 0.6511627906976745,
+        "project_entity_mean": 0.5581395348837209,
+        "multi_hop_mean": 0.4583333333333333,
+        "comparative_mean": 0.4444444444444444,
+        "adversarial_refusal_rate": 1.0,
+        "latency_ms_mean": 65.34023255813953,
+        "latency_ms_std": 22.092442619052996,
+        "tool_calls_mean": 1.4186046511627908,
+        "model_calls_mean": 2.5813953488372094,
+        "retry_count_mean": 0.5813953488372093,
+        "correction_rate": 0.5813953488372093,
+        "safe_fallback_rate": 0.3488372093023256
+      },
+      "agent_without_scope_bounded": {
+        "count": 43,
+        "fact_coverage_mean": 0.5813953488372093,
+        "faithfulness_mean": 0.5813953488372093,
+        "project_entity_mean": 0.4883720930232558,
+        "multi_hop_mean": 0.3333333333333333,
+        "comparative_mean": 0.3333333333333333,
+        "adversarial_refusal_rate": 1.0,
+        "latency_ms_mean": 64.14348837209302,
+        "latency_ms_std": 21.45014326224408,
+        "tool_calls_mean": 1.4186046511627908,
+        "model_calls_mean": 2.6511627906976742,
+        "retry_count_mean": 0.6511627906976745,
+        "correction_rate": 0.6511627906976745,
+        "safe_fallback_rate": 0.4186046511627907
+      },
+      "agent_without_technology_grounded": {
+        "count": 43,
+        "fact_coverage_mean": 0.7441860465116279,
+        "faithfulness_mean": 0.7441860465116279,
+        "project_entity_mean": 0.6511627906976745,
+        "multi_hop_mean": 0.6666666666666666,
+        "comparative_mean": 0.6666666666666666,
+        "adversarial_refusal_rate": 1.0,
+        "latency_ms_mean": 62.604418604651165,
+        "latency_ms_std": 14.990711589657945,
+        "tool_calls_mean": 1.4186046511627908,
+        "model_calls_mean": 2.488372093023256,
+        "retry_count_mean": 0.4883720930232558,
+        "correction_rate": 0.4883720930232558,
+        "safe_fallback_rate": 0.2558139534883721
+      },
+      "pipeline": {
+        "count": 43,
+        "fact_coverage_mean": 0.7441860465116279,
+        "faithfulness_mean": 0.7674418604651163,
+        "project_entity_mean": 0.5813953488372093,
+        "multi_hop_mean": 0.9166666666666666,
+        "comparative_mean": 1.0,
+        "adversarial_refusal_rate": 0.0,
+        "latency_ms_mean": 0.00023255813953488373,
+        "latency_ms_std": 0.001507148999629735,
+        "tool_calls_mean": 0,
+        "model_calls_mean": 0,
+        "retry_count_mean": 0,
+        "correction_rate": 0.0,
+        "safe_fallback_rate": 0.0
+      }
+    },
+    "by_category": {
+      "adversarial": {
+        "count": 80,
+        "fact_coverage_mean": 0.75,
+        "faithfulness_mean": 0.75,
+        "project_entity_mean": 0.75,
+        "multi_hop_mean": null,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": 0.75,
+        "latency_ms_mean": 42.04975,
+        "latency_ms_std": 18.87308513300091,
+        "tool_calls_mean": 0.875,
+        "model_calls_mean": 2.5,
+        "retry_count_mean": 0.75,
+        "correction_rate": 0.75,
+        "safe_fallback_rate": 0.0
+      },
+      "comparative": {
+        "count": 72,
+        "fact_coverage_mean": 0.5833333333333334,
+        "faithfulness_mean": 0.5833333333333334,
+        "project_entity_mean": 0.5833333333333334,
+        "multi_hop_mean": null,
+        "comparative_mean": 0.5833333333333334,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 59.61763888888889,
+        "latency_ms_std": 32.12502548607098,
+        "tool_calls_mean": 1.6527777777777777,
+        "model_calls_mean": 2.1666666666666665,
+        "retry_count_mean": 0.4166666666666667,
+        "correction_rate": 0.4166666666666667,
+        "safe_fallback_rate": 0.4166666666666667
+      },
+      "multi_hop": {
+        "count": 96,
+        "fact_coverage_mean": 0.546875,
+        "faithfulness_mean": 0.5729166666666666,
+        "project_entity_mean": 0.5729166666666666,
+        "multi_hop_mean": 0.546875,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 54.6059375,
+        "latency_ms_std": 30.60489001566733,
+        "tool_calls_mean": 1.6041666666666667,
+        "model_calls_mean": 2.1770833333333335,
+        "retry_count_mean": 0.4270833333333333,
+        "correction_rate": 0.4270833333333333,
+        "safe_fallback_rate": 0.4270833333333333
+      },
+      "single_hop": {
+        "count": 96,
+        "fact_coverage_mean": 0.78125,
+        "faithfulness_mean": 0.78125,
+        "project_entity_mean": 0.3333333333333333,
+        "multi_hop_mean": null,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 47.84791666666667,
+        "latency_ms_std": 24.373119923932368,
+        "tool_calls_mean": 0.875,
+        "model_calls_mean": 1.96875,
+        "retry_count_mean": 0.21875,
+        "correction_rate": 0.21875,
+        "safe_fallback_rate": 0.21875
+      }
+    },
+    "assertions": {
+      "total_run": 739,
+      "total_passed": 374,
+      "total_failed": 365,
+      "pass_rate": 0.5060893098782138,
+      "by_type": {
+        "metrics_grounded": {
+          "run": 130,
+          "passed": 10,
+          "failed": 120,
+          "pass_rate": 0.07692307692307693,
+          "failure_rate": 0.9230769230769231
+        },
+        "no_fabricated_dates": {
+          "run": 14,
+          "passed": 9,
+          "failed": 5,
+          "pass_rate": 0.6428571428571429,
+          "failure_rate": 0.35714285714285715
+        },
+        "project_exists": {
+          "run": 250,
+          "passed": 210,
+          "failed": 40,
+          "pass_rate": 0.84,
+          "failure_rate": 0.16
+        },
+        "scope_bounded": {
+          "run": 191,
+          "passed": 121,
+          "failed": 70,
+          "pass_rate": 0.6335078534031413,
+          "failure_rate": 0.36649214659685864
+        },
+        "tech_stack_grounded": {
+          "run": 154,
+          "passed": 24,
+          "failed": 130,
+          "pass_rate": 0.15584415584415584,
+          "failure_rate": 0.8441558441558441
+        }
+      },
+      "retry_causes": {
+        "metrics_grounded": 85,
+        "no_fabricated_dates": 5,
+        "project_exists": 25,
+        "scope_bounded": 60,
+        "tech_stack_grounded": 90
+      }
+    }
+  },
+  "notice": "MOCK INFRASTRUCTURE VALIDATION ONLY"
+}

@@ -8,6 +8,9 @@ grounded in — and cited against — their real README documentation.
 **Phase 3:** a React frontend, Docker Compose stack, and deployment
 (see [Frontend](#frontend), [Running the Full Stack](#running-the-full-stack-docker-compose),
 [Deployment](#deployment)).
+**Agent/assertions upgrade:** an additive Anthropic `tool_use` agent path
+(`/ask-agent`) validates draft answers with deterministic post-generation
+assertions before returning them.
 
 **Live demo:** https://interview-prep-frontend-xwk1.onrender.com
 (free tier — the backend sleeps when idle, so the first request after a
@@ -44,6 +47,28 @@ question ──► embed query ──► top-k search ─────┤
 | Vector store | `rag/vector_store.py` | FAISS `IndexFlatIP` over L2-normalized vectors (= exact cosine) |
 | Generation | `rag/generation.py` | Groq free tier, `llama-3.3-70b-versatile`, temperature 0 |
 | Orchestration | `rag/pipeline.py` | Retrieve → threshold gate → generate, with citations |
+| Agent path | `agent/agent.py` | Anthropic `tool_use` loop over the same FAISS-backed store |
+| Assertions | `packages/rag_assertions/` | Standalone deterministic grounding-validation package consumed by the agent |
+
+The assertion engine is now an independently packaged monorepo component:
+
+```text
+Interview Prep Assistant
+        |
+        |-- Agent
+        |-- Retrieval
+        |-- Evaluation
+        `-- rag_assertions
+             |-- Entity grounding
+             |-- Technology grounding
+             |-- Metric grounding
+             |-- Date grounding
+             `-- Scope grounding
+```
+
+Distribution name: `rag-assertions`. Import name: `rag_assertions`. It is
+publication-ready locally but has not been published to PyPI or TestPyPI, and
+package-name availability has not been verified.
 
 ## Design decisions and why
 
@@ -143,6 +168,114 @@ the documented figure (32,164 vs 77,856 bytes).
   plus refusal-checked; it is not a full LLM-judged entailment eval. At this
   eval size, spot-reading `evaluation/results.json` covers the gap.
 
+
+## Phase 3 Benchmark
+
+The newer benchmark framework lives in `evals/` and compares three
+configurations on the versioned `interview_prep_v1` dataset:
+
+- `pipeline` - original retrieve/generate RAG pipeline.
+- `agent_no_assertions` - same Anthropic tool-use agent with validation disabled.
+- `agent_with_assertions` - full agent plus deterministic assertion validation.
+
+Safe mocked smoke run, no API keys or live model calls:
+
+```powershell
+.venv\Scripts\python -m evals.runner --config all --mode mock
+```
+
+Live run, only when Anthropic/Groq credentials and cost are intended:
+
+```powershell
+.venv\Scripts\python -m evals.runner --config all --mode live --runs 1
+```
+
+Outputs are written to `evals/results/<timestamp>.../` as `results.json`,
+`summary.json`, `results.csv`, `failures.jsonl`, `comparative_failures.json`,
+`human_review_template.csv`, and a human-readable `REPORT.md`. Mocked results
+prove the evaluation machinery works; they are not live model-performance
+evidence.
+
+## ML Quality CI
+
+Phase 4 adds an ML-aware quality gate for pull requests:
+
+```powershell
+.venv\Scripts\python -m pytest tests
+.venv\Scripts\python -m evals.runner --config all --mode mock --runs 1 --output-dir evals\results\ci_mock
+.venv\Scripts\python -m evals.quality_gate --summary evals\results\ci_mock\summary.json --baseline evals\baselines\mock_v1.json --policy evals\policies\pr_gate.json --output-dir evals\results\ci_mock
+```
+
+The PR workflow is `.github/workflows/pr-quality.yml`. It runs tests, the
+deterministic mock benchmark, and the quality gate without requiring paid API
+credentials. The live workflow is `.github/workflows/live-eval.yml`; it is
+manual/scheduled and requires `ANTHROPIC_API_KEY` and `GROQ_API_KEY` GitHub
+Secrets. No approved live baseline is committed yet; create one only after a
+real live benchmark has been run and deliberately approved:
+
+```powershell
+.venv\Scripts\python -m evals.baseline approve --result evals\results\<live-run>\summary.json --name live_v1 --output-dir evals\baselines
+```
+
+Suggested required GitHub status check for branch protection:
+`AI Quality Gate / Tests + Deterministic Evaluation Gate`.
+
+## Phase 5 Assertion Ablation
+
+Phase 5 adds a dedicated experiment layer under `evals/experiments/` for
+assertion ablation studies. It reuses the normal agent and the existing
+`disabled_assertions` path, then compares:
+
+- `pipeline`
+- `agent_no_assertions`
+- `agent_with_assertions`
+- `agent_without_project_exists`
+- `agent_without_technology_grounded`
+- `agent_without_metrics_grounded`
+- `agent_without_dates_grounded`
+- `agent_without_scope_bounded`
+
+Mock infrastructure smoke run, no live APIs or paid credits:
+
+```powershell
+.venv\Scripts\python -m evals.experiments.ablation --mode mock --runs 1
+```
+
+Focused ablation:
+
+```powershell
+.venv\Scripts\python -m evals.experiments.ablation --mode mock --runs 1 --category adversarial --assertion metrics_grounded
+```
+
+Outputs are written under
+`evals/results/experiments/assertion_ablation_<timestamp>/` and include
+`manifest.json`, `results.json`, `results.csv`, `summary.json`,
+`failures.jsonl`, `comparisons.json`, `failure_analysis.json`,
+`PHASE5_REPORT.md`, `FAILURE_ANALYSIS.md`, `human_review_phase5.csv`,
+plus CSV tables and SVG charts.
+
+Important: mock output is labelled **MOCK INFRASTRUCTURE VALIDATION ONLY**.
+Until a successful `--mode live` run is executed with available provider
+credit, the project status is **LIVE ABLATION STUDY NOT YET EXECUTED** and no
+live model-quality conclusion should be claimed.
+
+## Phase 6 Standalone Assertion Package
+
+Phase 6 extracts the assertion engine into `packages/rag_assertions/`, a
+standalone `src/` layout Python package with no runtime dependencies and no
+model-provider imports. The parent app imports `rag_assertions` directly; the
+old `assertions/` module remains as a thin compatibility adapter only.
+
+```powershell
+.venv\Scripts\python -m pytest packages\rag_assertions\tests
+.venv\Scripts\python -m ruff check packages\rag_assertions\src packages\rag_assertions\tests packages\rag_assertions\examples
+.venv\Scripts\python -m build --no-isolation packages\rag_assertions
+.venv\Scripts\python -m twine check packages\rag_assertions\dist\*
+```
+
+Later manual publication steps are listed in `docs/RELEASE_CHECKLIST.md`.
+Phase 6 deliberately does not upload anything.
+
 ## API Layer
 
 Phase 2 wraps the Phase 1 pipeline in a FastAPI app ([api/main.py](api/main.py)).
@@ -156,6 +289,11 @@ are byte-for-byte the Phase 1 behavior — the refusal gate runs *inside*
 | `GET /health` | none | liveness check |
 | `POST /auth/login` | username + password | returns a JWT bearer token |
 | `POST /ask` | `Authorization: Bearer <jwt>` | question → grounded answer + cited sources + similarity scores |
+| `POST /ask-agent` | `Authorization: Bearer <jwt>` | question -> agent answer + trace path after assertion validation |
+
+`/ask-agent` is additive: it uses the same request shape as `/ask`, leaves the
+baseline pipeline untouched, records tool/evidence/assertion events to JSONL,
+and performs at most one controlled correction attempt if validation fails.
 
 ### Running it
 
@@ -329,7 +467,7 @@ Manual steps to go live (nothing below has been executed):
 5. Verify: open the static site URL, log in, ask the BigQuery question,
    and check an off-topic question still gets refused.
 
-## Tests — 31 passing (17 Phase 1 + 14 API)
+## Tests
 
 API tests ([tests/test_api.py](tests/test_api.py)) run against a
 `FakePipeline` injected via FastAPI dependency override — no Groq calls, no
@@ -340,6 +478,11 @@ answer with citations; the refusal path passes through the wrapper
 unchanged; invalid bodies → 422; a pipeline exception → 502 with no
 internals leaked; rate limiting returns 429 after the threshold and doesn't
 apply to `/health`.
+
+Agent and assertion tests cover the Anthropic tool loop with mocked responses,
+single-hop and multi-hop tool use, max-iteration stopping, assertion-triggered
+correction, persistent validation failure, and deterministic validation for
+project existence, technology grounding, metrics, dates, and scope.
 
 ### Phase 1 tests — 17
 
@@ -359,10 +502,20 @@ Dockerfile               # backend image (index + model baked at build)
 docker-compose.yml       # full stack: api + frontend
 render.yaml              # deployment blueprint (prep only — NOT deployed)
 api/
-  main.py                # FastAPI app: /health, /auth/login, /ask
+  main.py                # FastAPI app: /health, /auth/login, /ask, /ask-agent
   auth.py                # bcrypt password check + PyJWT issue/verify
   schemas.py             # Pydantic request/response models
   settings.py            # .env-backed config (same pattern as Phase 1)
+agent/
+  agent.py               # Anthropic tool_use loop + assertion validation
+  tools.py               # list_projects, get_project_summary, search_technical_details
+  traces.py              # JSONL operational traces
+packages/rag_assertions/
+  src/rag_assertions/    # standalone provider-free assertion library
+  tests/                 # package unit tests
+  examples/              # credential-free usage examples
+assertions/
+  *.py                   # compatibility wrappers around rag_assertions
 rag/
   chunking.py            # markdown-section chunking + metadata
   embeddings.py          # all-MiniLM-L6-v2 wrapper (Embedder protocol)
@@ -375,5 +528,5 @@ evaluation/
   eval_set.json          # 12 cases grounded in real README facts
   run_eval.py            # retrieval accuracy + answer faithfulness report
   results.json           # raw output of the latest real run
-tests/                   # 17 pytest tests, fully offline
+tests/                   # pytest tests, fully offline
 ```

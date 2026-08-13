@@ -1,0 +1,40 @@
+[
+  {
+    "question_id": "single_001",
+    "notes": [
+      "pipeline_correct_agent_no_assertions_incorrect"
+    ]
+  },
+  {
+    "question_id": "single_011",
+    "notes": [
+      "assertions_hurt"
+    ]
+  },
+  {
+    "question_id": "multi_001",
+    "notes": [
+      "assertions_hurt"
+    ]
+  },
+  {
+    "question_id": "comp_001",
+    "notes": [
+      "agent_no_assertions_correct_pipeline_incorrect",
+      "assertions_hurt"
+    ]
+  },
+  {
+    "question_id": "adv_001",
+    "notes": [
+      "assertions_hurt"
+    ]
+  },
+  {
+    "question_id": "adv_008",
+    "notes": [
+      "pipeline_correct_agent_no_assertions_incorrect",
+      "assertions_helped"
+    ]
+  }
+]

@@ -1,0 +1,154 @@
+{
+  "taxonomy_counts": {},
+  "representative_examples": {},
+  "false_positives": [],
+  "false_negatives": [],
+  "correction_failures": [],
+  "review_sample": [
+    {
+      "question_id": "single_001",
+      "configuration": "pipeline",
+      "run": 1,
+      "category": "single_hop",
+      "labels": [],
+      "question": "What warehouse does the UK Crime Data Pipeline use?",
+      "answer": "The UK Crime Data Pipeline uses DuckDB as its warehouse. Sources: benchmark"
+    },
+    {
+      "question_id": "single_001",
+      "configuration": "agent_no_assertions",
+      "run": 1,
+      "category": "single_hop",
+      "labels": [],
+      "question": "What warehouse does the UK Crime Data Pipeline use?",
+      "answer": "The UK Crime Data Pipeline uses DuckDB as its warehouse. Sources: benchmark"
+    },
+    {
+      "question_id": "single_001",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "single_hop",
+      "labels": [],
+      "question": "What warehouse does the UK Crime Data Pipeline use?",
+      "answer": "The UK Crime Data Pipeline uses DuckDB as its warehouse. Sources: benchmark"
+    },
+    {
+      "question_id": "single_001",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "category": "single_hop",
+      "labels": [],
+      "question": "What warehouse does the UK Crime Data Pipeline use?",
+      "answer": "The UK Crime Data Pipeline uses DuckDB as its warehouse. Sources: benchmark"
+    },
+    {
+      "question_id": "single_001",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "category": "single_hop",
+      "labels": [],
+      "question": "What warehouse does the UK Crime Data Pipeline use?",
+      "answer": "The UK Crime Data Pipeline uses DuckDB as its warehouse. Sources: benchmark"
+    },
+    {
+      "question_id": "single_001",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "category": "single_hop",
+      "labels": [],
+      "question": "What warehouse does the UK Crime Data Pipeline use?",
+      "answer": "The UK Crime Data Pipeline uses DuckDB as its warehouse. Sources: benchmark"
+    },
+    {
+      "question_id": "single_001",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "category": "single_hop",
+      "labels": [],
+      "question": "What warehouse does the UK Crime Data Pipeline use?",
+      "answer": "The UK Crime Data Pipeline uses DuckDB as its warehouse. Sources: benchmark"
+    },
+    {
+      "question_id": "single_001",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "category": "single_hop",
+      "labels": [],
+      "question": "What warehouse does the UK Crime Data Pipeline use?",
+      "answer": "The UK Crime Data Pipeline uses DuckDB as its warehouse. Sources: benchmark"
+    },
+    {
+      "question_id": "single_002",
+      "configuration": "pipeline",
+      "run": 1,
+      "category": "single_hop",
+      "labels": [],
+      "question": "How does the crime pipeline read data from S3?",
+      "answer": "DuckDB reads S3 through the httpfs extension. Sources: benchmark"
+    },
+    {
+      "question_id": "single_002",
+      "configuration": "agent_no_assertions",
+      "run": 1,
+      "category": "single_hop",
+      "labels": [],
+      "question": "How does the crime pipeline read data from S3?",
+      "answer": "DuckDB reads S3 through the httpfs extension. Sources: benchmark"
+    },
+    {
+      "question_id": "single_002",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "single_hop",
+      "labels": [],
+      "question": "How does the crime pipeline read data from S3?",
+      "answer": "DuckDB reads S3 through the httpfs extension. Sources: benchmark"
+    },
+    {
+      "question_id": "single_002",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "category": "single_hop",
+      "labels": [],
+      "question": "How does the crime pipeline read data from S3?",
+      "answer": "DuckDB reads S3 through the httpfs extension. Sources: benchmark"
+    },
+    {
+      "question_id": "single_002",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "category": "single_hop",
+      "labels": [],
+      "question": "How does the crime pipeline read data from S3?",
+      "answer": "DuckDB reads S3 through the httpfs extension. Sources: benchmark"
+    },
+    {
+      "question_id": "single_002",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "category": "single_hop",
+      "labels": [],
+      "question": "How does the crime pipeline read data from S3?",
+      "answer": "DuckDB reads S3 through the httpfs extension. Sources: benchmark"
+    },
+    {
+      "question_id": "single_002",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "category": "single_hop",
+      "labels": [],
+      "question": "How does the crime pipeline read data from S3?",
+      "answer": "DuckDB reads S3 through the httpfs extension. Sources: benchmark"
+    },
+    {
+      "question_id": "single_002",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "category": "single_hop",
+      "labels": [],
+      "question": "How does the crime pipeline read data from S3?",
+      "answer": "DuckDB reads S3 through the httpfs extension. Sources: benchmark"
+    }
+  ],
+  "failures": []
+}

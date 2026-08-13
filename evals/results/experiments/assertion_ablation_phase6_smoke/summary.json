@@ -1,0 +1,212 @@
+{
+  "metadata": {
+    "experiment": "phase5_assertion_ablation",
+    "dataset_version": "interview_prep_v1",
+    "dataset_path": "evals\\datasets\\interview_prep_v1.jsonl",
+    "timestamp": "2026-08-12T23:23:42.669007+00:00",
+    "mode": "mock",
+    "configurations": [
+      "pipeline",
+      "agent_no_assertions",
+      "agent_with_assertions",
+      "agent_without_project_exists",
+      "agent_without_technology_grounded",
+      "agent_without_metrics_grounded",
+      "agent_without_dates_grounded",
+      "agent_without_scope_bounded"
+    ],
+    "runs": 1,
+    "category_filter": null,
+    "assertion_filter": null,
+    "retrieval_settings": {
+      "index_dir": "index"
+    },
+    "git_commit": "d478bbe96f1e666e137149b500469df5427983bf",
+    "python_version": "3.11.9",
+    "dataset_size": 2,
+    "scoring_version": "1",
+    "live_ablation_executed": false,
+    "mock_notice": "MOCK INFRASTRUCTURE VALIDATION ONLY"
+  },
+  "aggregates": {
+    "by_configuration": {
+      "agent_no_assertions": {
+        "count": 2,
+        "fact_coverage_mean": 1.0,
+        "faithfulness_mean": 1.0,
+        "project_entity_mean": 0.5,
+        "multi_hop_mean": null,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 22.4,
+        "latency_ms_std": 3.4399999999999995,
+        "tool_calls_mean": 1,
+        "model_calls_mean": 2,
+        "retry_count_mean": 0,
+        "correction_rate": 0.0,
+        "safe_fallback_rate": 0.0
+      },
+      "agent_with_assertions": {
+        "count": 2,
+        "fact_coverage_mean": 1.0,
+        "faithfulness_mean": 1.0,
+        "project_entity_mean": 0.5,
+        "multi_hop_mean": null,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 26.380000000000003,
+        "latency_ms_std": 2.4399999999999995,
+        "tool_calls_mean": 1,
+        "model_calls_mean": 2,
+        "retry_count_mean": 0,
+        "correction_rate": 0.0,
+        "safe_fallback_rate": 0.0
+      },
+      "agent_without_dates_grounded": {
+        "count": 2,
+        "fact_coverage_mean": 1.0,
+        "faithfulness_mean": 1.0,
+        "project_entity_mean": 0.5,
+        "multi_hop_mean": null,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 28.115000000000002,
+        "latency_ms_std": 2.735000000000001,
+        "tool_calls_mean": 1,
+        "model_calls_mean": 2,
+        "retry_count_mean": 0,
+        "correction_rate": 0.0,
+        "safe_fallback_rate": 0.0
+      },
+      "agent_without_metrics_grounded": {
+        "count": 2,
+        "fact_coverage_mean": 1.0,
+        "faithfulness_mean": 1.0,
+        "project_entity_mean": 0.5,
+        "multi_hop_mean": null,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 25.07,
+        "latency_ms_std": 0.7599999999999998,
+        "tool_calls_mean": 1,
+        "model_calls_mean": 2,
+        "retry_count_mean": 0,
+        "correction_rate": 0.0,
+        "safe_fallback_rate": 0.0
+      },
+      "agent_without_project_exists": {
+        "count": 2,
+        "fact_coverage_mean": 1.0,
+        "faithfulness_mean": 1.0,
+        "project_entity_mean": 0.5,
+        "multi_hop_mean": null,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 28.85,
+        "latency_ms_std": 6.01,
+        "tool_calls_mean": 1,
+        "model_calls_mean": 2,
+        "retry_count_mean": 0,
+        "correction_rate": 0.0,
+        "safe_fallback_rate": 0.0
+      },
+      "agent_without_scope_bounded": {
+        "count": 2,
+        "fact_coverage_mean": 1.0,
+        "faithfulness_mean": 1.0,
+        "project_entity_mean": 0.5,
+        "multi_hop_mean": null,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 23.045,
+        "latency_ms_std": 0.375,
+        "tool_calls_mean": 1,
+        "model_calls_mean": 2,
+        "retry_count_mean": 0,
+        "correction_rate": 0.0,
+        "safe_fallback_rate": 0.0
+      },
+      "agent_without_technology_grounded": {
+        "count": 2,
+        "fact_coverage_mean": 1.0,
+        "faithfulness_mean": 1.0,
+        "project_entity_mean": 0.5,
+        "multi_hop_mean": null,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 35.06,
+        "latency_ms_std": 17.4,
+        "tool_calls_mean": 1,
+        "model_calls_mean": 2,
+        "retry_count_mean": 0,
+        "correction_rate": 0.0,
+        "safe_fallback_rate": 0.0
+      },
+      "pipeline": {
+        "count": 2,
+        "fact_coverage_mean": 1.0,
+        "faithfulness_mean": 1.0,
+        "project_entity_mean": 0.5,
+        "multi_hop_mean": null,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 0.0,
+        "latency_ms_std": 0.0,
+        "tool_calls_mean": 0,
+        "model_calls_mean": 0,
+        "retry_count_mean": 0,
+        "correction_rate": 0.0,
+        "safe_fallback_rate": 0.0
+      }
+    },
+    "by_category": {
+      "single_hop": {
+        "count": 16,
+        "fact_coverage_mean": 1.0,
+        "faithfulness_mean": 1.0,
+        "project_entity_mean": 0.5,
+        "multi_hop_mean": null,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 23.615000000000002,
+        "latency_ms_std": 11.793751523582308,
+        "tool_calls_mean": 0.875,
+        "model_calls_mean": 1.75,
+        "retry_count_mean": 0,
+        "correction_rate": 0.0,
+        "safe_fallback_rate": 0.0
+      }
+    },
+    "assertions": {
+      "total_run": 15,
+      "total_passed": 15,
+      "total_failed": 0,
+      "pass_rate": 1.0,
+      "by_type": {
+        "project_exists": {
+          "run": 5,
+          "passed": 5,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "failure_rate": 0.0
+        },
+        "scope_bounded": {
+          "run": 5,
+          "passed": 5,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "failure_rate": 0.0
+        },
+        "tech_stack_grounded": {
+          "run": 5,
+          "passed": 5,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "failure_rate": 0.0
+        }
+      },
+      "retry_causes": {}
+    }
+  },
+  "notice": "MOCK INFRASTRUCTURE VALIDATION ONLY"
+}

@@ -1,0 +1,448 @@
+{
+  "architecture_primary_metrics": {
+    "agent_no_assertions": {
+      "count": 2,
+      "fact_coverage_mean": 1.0,
+      "faithfulness_mean": 1.0,
+      "project_entity_mean": 0.5,
+      "multi_hop_mean": null,
+      "comparative_mean": null,
+      "adversarial_refusal_rate": null,
+      "latency_ms_mean": 22.4,
+      "latency_ms_std": 3.4399999999999995,
+      "tool_calls_mean": 1,
+      "model_calls_mean": 2,
+      "retry_count_mean": 0,
+      "correction_rate": 0.0,
+      "safe_fallback_rate": 0.0
+    },
+    "agent_with_assertions": {
+      "count": 2,
+      "fact_coverage_mean": 1.0,
+      "faithfulness_mean": 1.0,
+      "project_entity_mean": 0.5,
+      "multi_hop_mean": null,
+      "comparative_mean": null,
+      "adversarial_refusal_rate": null,
+      "latency_ms_mean": 26.380000000000003,
+      "latency_ms_std": 2.4399999999999995,
+      "tool_calls_mean": 1,
+      "model_calls_mean": 2,
+      "retry_count_mean": 0,
+      "correction_rate": 0.0,
+      "safe_fallback_rate": 0.0
+    },
+    "agent_without_dates_grounded": {
+      "count": 2,
+      "fact_coverage_mean": 1.0,
+      "faithfulness_mean": 1.0,
+      "project_entity_mean": 0.5,
+      "multi_hop_mean": null,
+      "comparative_mean": null,
+      "adversarial_refusal_rate": null,
+      "latency_ms_mean": 28.115000000000002,
+      "latency_ms_std": 2.735000000000001,
+      "tool_calls_mean": 1,
+      "model_calls_mean": 2,
+      "retry_count_mean": 0,
+      "correction_rate": 0.0,
+      "safe_fallback_rate": 0.0
+    },
+    "agent_without_metrics_grounded": {
+      "count": 2,
+      "fact_coverage_mean": 1.0,
+      "faithfulness_mean": 1.0,
+      "project_entity_mean": 0.5,
+      "multi_hop_mean": null,
+      "comparative_mean": null,
+      "adversarial_refusal_rate": null,
+      "latency_ms_mean": 25.07,
+      "latency_ms_std": 0.7599999999999998,
+      "tool_calls_mean": 1,
+      "model_calls_mean": 2,
+      "retry_count_mean": 0,
+      "correction_rate": 0.0,
+      "safe_fallback_rate": 0.0
+    },
+    "agent_without_project_exists": {
+      "count": 2,
+      "fact_coverage_mean": 1.0,
+      "faithfulness_mean": 1.0,
+      "project_entity_mean": 0.5,
+      "multi_hop_mean": null,
+      "comparative_mean": null,
+      "adversarial_refusal_rate": null,
+      "latency_ms_mean": 28.85,
+      "latency_ms_std": 6.01,
+      "tool_calls_mean": 1,
+      "model_calls_mean": 2,
+      "retry_count_mean": 0,
+      "correction_rate": 0.0,
+      "safe_fallback_rate": 0.0
+    },
+    "agent_without_scope_bounded": {
+      "count": 2,
+      "fact_coverage_mean": 1.0,
+      "faithfulness_mean": 1.0,
+      "project_entity_mean": 0.5,
+      "multi_hop_mean": null,
+      "comparative_mean": null,
+      "adversarial_refusal_rate": null,
+      "latency_ms_mean": 23.045,
+      "latency_ms_std": 0.375,
+      "tool_calls_mean": 1,
+      "model_calls_mean": 2,
+      "retry_count_mean": 0,
+      "correction_rate": 0.0,
+      "safe_fallback_rate": 0.0
+    },
+    "agent_without_technology_grounded": {
+      "count": 2,
+      "fact_coverage_mean": 1.0,
+      "faithfulness_mean": 1.0,
+      "project_entity_mean": 0.5,
+      "multi_hop_mean": null,
+      "comparative_mean": null,
+      "adversarial_refusal_rate": null,
+      "latency_ms_mean": 35.06,
+      "latency_ms_std": 17.4,
+      "tool_calls_mean": 1,
+      "model_calls_mean": 2,
+      "retry_count_mean": 0,
+      "correction_rate": 0.0,
+      "safe_fallback_rate": 0.0
+    },
+    "pipeline": {
+      "count": 2,
+      "fact_coverage_mean": 1.0,
+      "faithfulness_mean": 1.0,
+      "project_entity_mean": 0.5,
+      "multi_hop_mean": null,
+      "comparative_mean": null,
+      "adversarial_refusal_rate": null,
+      "latency_ms_mean": 0.0,
+      "latency_ms_std": 0.0,
+      "tool_calls_mean": 0,
+      "model_calls_mean": 0,
+      "retry_count_mean": 0,
+      "correction_rate": 0.0,
+      "safe_fallback_rate": 0.0
+    }
+  },
+  "assertion_level_metrics": {
+    "total_run": 15,
+    "total_passed": 15,
+    "total_failed": 0,
+    "pass_rate": 1.0,
+    "by_type": {
+      "project_exists": {
+        "run": 5,
+        "passed": 5,
+        "failed": 0,
+        "pass_rate": 1.0,
+        "failure_rate": 0.0
+      },
+      "scope_bounded": {
+        "run": 5,
+        "passed": 5,
+        "failed": 0,
+        "pass_rate": 1.0,
+        "failure_rate": 0.0
+      },
+      "tech_stack_grounded": {
+        "run": 5,
+        "passed": 5,
+        "failed": 0,
+        "pass_rate": 1.0,
+        "failure_rate": 0.0
+      }
+    },
+    "retry_causes": {}
+  },
+  "marginal_deltas": {
+    "agent_without_dates_grounded": {
+      "fact_coverage_mean": 0.0,
+      "faithfulness_mean": 0.0,
+      "adversarial_refusal_rate": null,
+      "safe_fallback_rate": 0.0,
+      "correction_rate": 0.0,
+      "latency_ms_mean": 1.7349999999999994
+    },
+    "agent_without_metrics_grounded": {
+      "fact_coverage_mean": 0.0,
+      "faithfulness_mean": 0.0,
+      "adversarial_refusal_rate": null,
+      "safe_fallback_rate": 0.0,
+      "correction_rate": 0.0,
+      "latency_ms_mean": -1.3100000000000023
+    },
+    "agent_without_project_exists": {
+      "fact_coverage_mean": 0.0,
+      "faithfulness_mean": 0.0,
+      "adversarial_refusal_rate": null,
+      "safe_fallback_rate": 0.0,
+      "correction_rate": 0.0,
+      "latency_ms_mean": 2.469999999999999
+    },
+    "agent_without_scope_bounded": {
+      "fact_coverage_mean": 0.0,
+      "faithfulness_mean": 0.0,
+      "adversarial_refusal_rate": null,
+      "safe_fallback_rate": 0.0,
+      "correction_rate": 0.0,
+      "latency_ms_mean": -3.335000000000001
+    },
+    "agent_without_technology_grounded": {
+      "fact_coverage_mean": 0.0,
+      "faithfulness_mean": 0.0,
+      "adversarial_refusal_rate": null,
+      "safe_fallback_rate": 0.0,
+      "correction_rate": 0.0,
+      "latency_ms_mean": 8.68
+    }
+  },
+  "paired_comparisons": [
+    {
+      "left": "pipeline",
+      "right": "agent_no_assertions",
+      "count": 2,
+      "left_wins": 0,
+      "right_wins": 0,
+      "ties": 2,
+      "mean_right_minus_left": {
+        "faithfulness_score": 0.0,
+        "latency_ms": 22.4,
+        "required_fact_score": 0.0
+      }
+    },
+    {
+      "left": "agent_no_assertions",
+      "right": "agent_with_assertions",
+      "count": 2,
+      "left_wins": 0,
+      "right_wins": 0,
+      "ties": 2,
+      "mean_right_minus_left": {
+        "faithfulness_score": 0.0,
+        "latency_ms": 3.9800000000000004,
+        "required_fact_score": 0.0
+      }
+    },
+    {
+      "left": "agent_with_assertions",
+      "right": "agent_without_dates_grounded",
+      "count": 2,
+      "left_wins": 0,
+      "right_wins": 0,
+      "ties": 2,
+      "mean_right_minus_left": {
+        "faithfulness_score": 0.0,
+        "latency_ms": 1.7349999999999994,
+        "required_fact_score": 0.0
+      }
+    },
+    {
+      "left": "agent_with_assertions",
+      "right": "agent_without_metrics_grounded",
+      "count": 2,
+      "left_wins": 0,
+      "right_wins": 0,
+      "ties": 2,
+      "mean_right_minus_left": {
+        "faithfulness_score": 0.0,
+        "latency_ms": -1.3100000000000023,
+        "required_fact_score": 0.0
+      }
+    },
+    {
+      "left": "agent_with_assertions",
+      "right": "agent_without_project_exists",
+      "count": 2,
+      "left_wins": 0,
+      "right_wins": 0,
+      "ties": 2,
+      "mean_right_minus_left": {
+        "faithfulness_score": 0.0,
+        "latency_ms": 2.469999999999999,
+        "required_fact_score": 0.0
+      }
+    },
+    {
+      "left": "agent_with_assertions",
+      "right": "agent_without_scope_bounded",
+      "count": 2,
+      "left_wins": 0,
+      "right_wins": 0,
+      "ties": 2,
+      "mean_right_minus_left": {
+        "faithfulness_score": 0.0,
+        "latency_ms": -3.334999999999999,
+        "required_fact_score": 0.0
+      }
+    },
+    {
+      "left": "agent_with_assertions",
+      "right": "agent_without_technology_grounded",
+      "count": 2,
+      "left_wins": 0,
+      "right_wins": 0,
+      "ties": 2,
+      "mean_right_minus_left": {
+        "faithfulness_score": 0.0,
+        "latency_ms": 8.68,
+        "required_fact_score": 0.0
+      }
+    }
+  ],
+  "assertion_category_matrix": {
+    "project_exists": {
+      "single_hop": {
+        "run": 5,
+        "failed": 0,
+        "failure_rate": 0.0
+      }
+    },
+    "scope_bounded": {
+      "single_hop": {
+        "run": 5,
+        "failed": 0,
+        "failure_rate": 0.0
+      }
+    },
+    "tech_stack_grounded": {
+      "single_hop": {
+        "run": 5,
+        "failed": 0,
+        "failure_rate": 0.0
+      }
+    }
+  },
+  "correction_effectiveness": {
+    "attempts": 0,
+    "successful": 0,
+    "safe_fallback_after_retry": 0,
+    "success_rate": null,
+    "by_assertion": {}
+  },
+  "safety_usefulness_tradeoff": {
+    "paired_items": 2,
+    "assertions_helped": 0,
+    "assertions_hurt": 0,
+    "neutral": 2,
+    "help_rate": 0.0,
+    "hurt_rate": 0.0,
+    "hurt_examples": []
+  },
+  "operational_cost": {
+    "agent_no_assertions": {
+      "latency_ms": {
+        "mean": 22.4,
+        "median": 22.4,
+        "p95": 25.496
+      },
+      "tool_calls_mean": 1.0,
+      "model_calls_mean": 2.0,
+      "retry_rate": 0.0,
+      "safe_fallback_rate": 0.0
+    },
+    "agent_with_assertions": {
+      "latency_ms": {
+        "mean": 26.380000000000003,
+        "median": 26.380000000000003,
+        "p95": 28.576
+      },
+      "tool_calls_mean": 1.0,
+      "model_calls_mean": 2.0,
+      "retry_rate": 0.0,
+      "safe_fallback_rate": 0.0
+    },
+    "agent_without_dates_grounded": {
+      "latency_ms": {
+        "mean": 28.115000000000002,
+        "median": 28.115000000000002,
+        "p95": 30.576500000000003
+      },
+      "tool_calls_mean": 1.0,
+      "model_calls_mean": 2.0,
+      "retry_rate": 0.0,
+      "safe_fallback_rate": 0.0
+    },
+    "agent_without_metrics_grounded": {
+      "latency_ms": {
+        "mean": 25.07,
+        "median": 25.07,
+        "p95": 25.753999999999998
+      },
+      "tool_calls_mean": 1.0,
+      "model_calls_mean": 2.0,
+      "retry_rate": 0.0,
+      "safe_fallback_rate": 0.0
+    },
+    "agent_without_project_exists": {
+      "latency_ms": {
+        "mean": 28.85,
+        "median": 28.85,
+        "p95": 34.259
+      },
+      "tool_calls_mean": 1.0,
+      "model_calls_mean": 2.0,
+      "retry_rate": 0.0,
+      "safe_fallback_rate": 0.0
+    },
+    "agent_without_scope_bounded": {
+      "latency_ms": {
+        "mean": 23.045,
+        "median": 23.045,
+        "p95": 23.382500000000004
+      },
+      "tool_calls_mean": 1.0,
+      "model_calls_mean": 2.0,
+      "retry_rate": 0.0,
+      "safe_fallback_rate": 0.0
+    },
+    "agent_without_technology_grounded": {
+      "latency_ms": {
+        "mean": 35.06,
+        "median": 35.06,
+        "p95": 50.72
+      },
+      "tool_calls_mean": 1.0,
+      "model_calls_mean": 2.0,
+      "retry_rate": 0.0,
+      "safe_fallback_rate": 0.0
+    },
+    "pipeline": {
+      "latency_ms": {
+        "mean": 0.0,
+        "median": 0.0,
+        "p95": 0.0
+      },
+      "tool_calls_mean": 0.0,
+      "model_calls_mean": 0.0,
+      "retry_rate": 0.0,
+      "safe_fallback_rate": 0.0
+    }
+  },
+  "api_freeze_recommendations": [
+    {
+      "surface": "EvidenceItem",
+      "recommendation": "PROVISIONAL - LIVE ABLATION STUDY NOT YET EXECUTED: keep stable; core citation contract is used across assertions."
+    },
+    {
+      "surface": "AssertionResult",
+      "recommendation": "PROVISIONAL - LIVE ABLATION STUDY NOT YET EXECUTED: keep stable; add fields only with defaults."
+    },
+    {
+      "surface": "ValidationResult",
+      "recommendation": "PROVISIONAL - LIVE ABLATION STUDY NOT YET EXECUTED: keep stable for gating and experiment serialization."
+    },
+    {
+      "surface": "AssertionRunner(disabled_assertions=...)",
+      "recommendation": "PROVISIONAL - LIVE ABLATION STUDY NOT YET EXECUTED: keep; it is the ablation control point."
+    },
+    {
+      "surface": "Individual assertion names",
+      "recommendation": "PROVISIONAL - LIVE ABLATION STUDY NOT YET EXECUTED: avoid renames; aliases can expand without breaking results."
+    }
+  ]
+}

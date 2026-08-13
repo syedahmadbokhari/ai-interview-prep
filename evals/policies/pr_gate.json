@@ -1,0 +1,50 @@
+{
+  "name": "pr_gate",
+  "description": "Deterministic PR gate over the approved mock benchmark baseline. Tolerances are engineering tolerances for CI stability, not research-derived live quality claims.",
+  "hard_failures": {
+    "expected_dataset_size": 43,
+    "required_configurations": [
+      "pipeline",
+      "agent_no_assertions",
+      "agent_with_assertions"
+    ]
+  },
+  "compatibility": {
+    "required_equal": [
+      "dataset_version",
+      "scoring_version"
+    ]
+  },
+  "regression_limits": [
+    {
+      "metric": "pipeline.fact_coverage_mean",
+      "max_regression": 0.001
+    },
+    {
+      "metric": "agent_no_assertions.fact_coverage_mean",
+      "max_regression": 0.001
+    },
+    {
+      "metric": "agent_with_assertions.adversarial_refusal_rate",
+      "max_regression": 0.001
+    },
+    {
+      "metric": "agent_with_assertions.faithfulness_mean",
+      "max_regression": 0.05
+    }
+  ],
+  "absolute_minimums": [
+    {
+      "metric": "agent_with_assertions.adversarial_refusal_rate",
+      "minimum": 1.0
+    }
+  ],
+  "cross_config_rules": [
+    {
+      "left": "agent_with_assertions.adversarial_refusal_rate",
+      "operator": ">=",
+      "right": "agent_no_assertions.adversarial_refusal_rate",
+      "tolerance": 0.0
+    }
+  ]
+}

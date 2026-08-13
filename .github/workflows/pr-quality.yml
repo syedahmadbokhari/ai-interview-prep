@@ -1,0 +1,94 @@
+name: AI Quality Gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  quality:
+    name: Tests + Deterministic Evaluation Gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e "packages/rag_assertions[dev]"
+
+      - name: Run package tests
+        run: python -m pytest packages/rag_assertions/tests
+
+      - name: Build standalone package
+        run: python -m build packages/rag_assertions
+
+      - name: Validate package metadata
+        run: python -m twine check packages/rag_assertions/dist/*
+
+      - name: Clean-install standalone wheel
+        run: |
+          python -m venv .package-smoke
+          . .package-smoke/bin/activate
+          python -m pip install packages/rag_assertions/dist/*.whl
+          python - <<'PY'
+          from rag_assertions import AssertionRunner, EvidenceItem
+          result = AssertionRunner(disabled_assertions={"scope"}).validate(
+              "Product Alpha achieved 94% accuracy.",
+              [EvidenceItem(text="Product Alpha achieved 94% accuracy.", entity="Product Alpha")],
+              project_registry=["Product Alpha"],
+          )
+          assert result.passed
+          print("clean wheel import and validation passed")
+          PY
+
+      - name: Run Python tests
+        run: python -m pytest tests
+
+      - name: Run deterministic mock evaluation
+        run: |
+          python -m evals.runner --config all --mode mock --runs 1 --output-dir evals/results/ci_mock
+
+      - name: Run quality gate
+        run: |
+          python -m evals.quality_gate \
+            --summary evals/results/ci_mock/summary.json \
+            --baseline evals/baselines/mock_v1.json \
+            --policy evals/policies/pr_gate.json \
+            --output-dir evals/results/ci_mock
+
+      - name: Write job summary
+        if: always()
+        run: |
+          echo "## AI Evaluation Summary" >> "$GITHUB_STEP_SUMMARY"
+          if [ -f evals/results/ci_mock/QUALITY_GATE.md ]; then
+            cat evals/results/ci_mock/QUALITY_GATE.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Quality gate report was not generated." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload evaluation artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-mock-evaluation
+          path: |
+            evals/results/ci_mock/results.json
+            evals/results/ci_mock/summary.json
+            evals/results/ci_mock/results.csv
+            evals/results/ci_mock/failures.jsonl
+            evals/results/ci_mock/comparative_failures.json
+            evals/results/ci_mock/REPORT.md
+            evals/results/ci_mock/quality_gate.json
+            evals/results/ci_mock/QUALITY_GATE.md
+          retention-days: 14

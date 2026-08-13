@@ -1,0 +1,131 @@
+{
+  "experiment": "controlled_live_validation_10",
+  "status": "complete",
+  "timestamp": "2026-08-13T00:15:33.264225+00:00",
+  "git_commit": "d478bbe96f1e666e137149b500469df5427983bf",
+  "dataset_path": "evals\\datasets\\interview_prep_v1.jsonl",
+  "dataset_version": "interview_prep_v1",
+  "mode": "live",
+  "model": "claude-sonnet-4-6",
+  "temperature": 0,
+  "retrieval_settings": {
+    "index_dir": "index"
+  },
+  "generation_settings": {
+    "agent_max_iterations": 5,
+    "agent_max_tokens": 1200
+  },
+  "assertion_configuration": {
+    "disabled_assertions": []
+  },
+  "scoring_version": "1",
+  "selected_question_ids": [
+    "single_001",
+    "single_007",
+    "single_011",
+    "multi_001",
+    "multi_006",
+    "multi_010",
+    "comp_001",
+    "comp_008",
+    "adv_001",
+    "adv_008"
+  ],
+  "selected_questions": [
+    {
+      "id": "single_001",
+      "category": "single_hop",
+      "question": "What warehouse does the UK Crime Data Pipeline use?"
+    },
+    {
+      "id": "single_007",
+      "category": "single_hop",
+      "question": "What was the BigQuery bytes-scanned reduction in the Retail Data Platform?"
+    },
+    {
+      "id": "single_011",
+      "category": "single_hop",
+      "question": "What dashboard technology is used for the crime pipeline's geospatial dashboard?"
+    },
+    {
+      "id": "multi_001",
+      "category": "multi_hop",
+      "question": "Which indexed projects use Docker, and what role does Docker play in each?"
+    },
+    {
+      "id": "multi_006",
+      "category": "multi_hop",
+      "question": "Which projects discuss data quality, and what quality controls are documented?"
+    },
+    {
+      "id": "multi_010",
+      "category": "multi_hop",
+      "question": "What are the documented data sources for the two projects?"
+    },
+    {
+      "id": "comp_001",
+      "category": "comparative",
+      "question": "Compare the warehouse choices in the Retail Data Platform and UK Crime Data Pipeline."
+    },
+    {
+      "id": "comp_008",
+      "category": "comparative",
+      "question": "Compare the orchestration designs in both projects."
+    },
+    {
+      "id": "adv_001",
+      "category": "adversarial",
+      "question": "What framework did I use in my Java Fraud Detection project?"
+    },
+    {
+      "id": "adv_008",
+      "category": "adversarial",
+      "question": "What production Kubernetes cluster did the Retail Data Platform deploy?"
+    }
+  ],
+  "configurations": [
+    "agent_no_assertions",
+    "agent_with_assertions",
+    "pipeline"
+  ],
+  "output_dir": "evals\\results\\live_validation_10_20260813_001517",
+  "records_completed": 30,
+  "expected_records": 30,
+  "runtime_seconds": 376.58,
+  "completion": {
+    "expected_per_config": 10,
+    "actual_per_config": {
+      "agent_no_assertions": 10,
+      "agent_with_assertions": 10,
+      "pipeline": 10
+    },
+    "expected_total": 30,
+    "actual_total": 30,
+    "complete": true
+  },
+  "token_usage": {
+    "total": {
+      "input_tokens": 247239,
+      "output_tokens": 16755,
+      "total_tokens": 263994
+    },
+    "by_configuration": {
+      "agent_no_assertions": {
+        "input_tokens": 122475,
+        "output_tokens": 8823,
+        "total_tokens": 131298
+      },
+      "agent_with_assertions": {
+        "input_tokens": 118276,
+        "output_tokens": 7429,
+        "total_tokens": 125705
+      },
+      "pipeline": {
+        "input_tokens": 6488,
+        "output_tokens": 503,
+        "total_tokens": 6991
+      }
+    }
+  },
+  "scoring_notes": "Rescored saved answers after fixing negated adversarial forbidden-claim detection; no new API calls were made."
+}

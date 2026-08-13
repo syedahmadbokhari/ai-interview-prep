@@ -48,6 +48,26 @@ class FakePipeline:
         )
 
 
+class FakeAgent:
+    def __init__(self, error: Exception | None = None) -> None:
+        self.error = error
+        self.calls: list[str] = []
+
+    def ask(self, question: str):
+        self.calls.append(question)
+        if self.error:
+            raise self.error
+        return type(
+            "AgentResult",
+            (),
+            {
+                "question": question,
+                "answer": "Agent answer. Sources: crime > Warehouse",
+                "trace_path": "output/agent_traces/test.jsonl",
+            },
+        )()
+
+
 @pytest.fixture()
 def client(monkeypatch):
     monkeypatch.setenv("JWT_SECRET_KEY", TEST_SECRET)
@@ -59,9 +79,12 @@ def client(monkeypatch):
 
     app = api_main.create_app()
     fake = FakePipeline()
+    fake_agent = FakeAgent()
     app.dependency_overrides[api_main.get_pipeline] = lambda: fake
+    app.dependency_overrides[api_main.get_agent] = lambda: fake_agent
     test_client = TestClient(app)
     test_client.fake_pipeline = fake
+    test_client.fake_agent = fake_agent
     yield test_client
     get_settings.cache_clear()
 
@@ -220,6 +243,23 @@ def test_ask_invalid_body_is_422(client):
         ).status_code
         == 422
     )
+
+
+def test_ask_agent_with_valid_token_returns_answer_and_trace_path(client):
+    token = login_token(client)
+    resp = client.post(
+        "/ask-agent",
+        json={"question": "Which warehouse does the crime pipeline use?"},
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert resp.status_code == 200
+    body = resp.json()
+    assert body == {
+        "question": "Which warehouse does the crime pipeline use?",
+        "answer": "Agent answer. Sources: crime > Warehouse",
+        "trace_path": "output/agent_traces/test.jsonl",
+    }
+    assert client.fake_agent.calls == ["Which warehouse does the crime pipeline use?"]
 
 
 def test_pipeline_failure_returns_502_not_traceback(client):

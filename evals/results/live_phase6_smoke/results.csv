@@ -1,0 +1,7 @@
+question_id,category,configuration,run,required_fact_score,faithfulness_score,project_entity_score,multi_hop_score,comparative_score,adversarial_success,tool_calls,model_calls,retry_count,latency_ms,safe_fallback
+single_001,single_hop,agent_no_assertions,1,1.0,0.0,1.0,,,,2,3,0,10002.15,False
+single_002,single_hop,agent_no_assertions,1,1.0,0.0,1.0,,,,4,5,0,23003.26,False
+single_001,single_hop,agent_with_assertions,1,0.0,0.0,0.0,,,,2,4,1,11227.19,True
+single_002,single_hop,agent_with_assertions,1,0.0,0.0,0.0,,,,7,6,1,37912.95,True
+single_001,single_hop,pipeline,1,1.0,1.0,1.0,,,,0,1,0,1015.86,False
+single_002,single_hop,pipeline,1,1.0,0.0,1.0,,,,0,1,0,310.7,False

@@ -1,0 +1,6 @@
+name,adversarial_refusal_rate,correction_rate,fact_coverage_mean,faithfulness_mean,latency_ms_mean,safe_fallback_rate
+agent_without_dates_grounded,,0.0,0.0,0.0,1.7349999999999994,0.0
+agent_without_metrics_grounded,,0.0,0.0,0.0,-1.3100000000000023,0.0
+agent_without_project_exists,,0.0,0.0,0.0,2.469999999999999,0.0
+agent_without_scope_bounded,,0.0,0.0,0.0,-3.335000000000001,0.0
+agent_without_technology_grounded,,0.0,0.0,0.0,8.68,0.0

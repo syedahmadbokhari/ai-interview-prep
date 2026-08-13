@@ -1,0 +1,3922 @@
+{
+  "taxonomy_counts": {
+    "comparative_reasoning_gap": 30,
+    "correction_failure": 92,
+    "date_assertion_failure": 5,
+    "failed_refusal": 20,
+    "incomplete_required_facts": 117,
+    "metrics_assertion_failure": 85,
+    "multi_hop_reasoning_gap": 46,
+    "project_assertion_failure": 25,
+    "scope_assertion_failure": 60,
+    "technology_assertion_failure": 90,
+    "ungrounded_answer": 112,
+    "unnecessary_refusal_candidate": 92,
+    "unsupported_claim_leaked": 20
+  },
+  "representative_examples": {
+    "comparative_reasoning_gap": [
+      {
+        "label": "comparative_reasoning_gap",
+        "question_id": "comp_002",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "comparative",
+        "retry_failed_assertions": [
+          "tech_stack_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "comparative_reasoning_gap",
+        "question_id": "comp_003",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "comparative",
+        "retry_failed_assertions": [
+          "tech_stack_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "comparative_reasoning_gap",
+        "question_id": "comp_005",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "comparative",
+        "retry_failed_assertions": [
+          "metrics_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "comparative_reasoning_gap",
+        "question_id": "comp_006",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "comparative",
+        "retry_failed_assertions": [
+          "tech_stack_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "comparative_reasoning_gap",
+        "question_id": "comp_007",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "comparative",
+        "retry_failed_assertions": [
+          "project_exists"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      }
+    ],
+    "correction_failure": [
+      {
+        "label": "correction_failure",
+        "question_id": "single_003",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "single_hop",
+        "retry_failed_assertions": [
+          "metrics_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "correction_failure",
+        "question_id": "single_007",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "single_hop",
+        "retry_failed_assertions": [
+          "metrics_grounded",
+          "scope_bounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "correction_failure",
+        "question_id": "single_009",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "single_hop",
+        "retry_failed_assertions": [
+          "metrics_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "correction_failure",
+        "question_id": "single_010",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "single_hop",
+        "retry_failed_assertions": [
+          "metrics_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "correction_failure",
+        "question_id": "multi_001",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [
+          "tech_stack_grounded",
+          "scope_bounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      }
+    ],
+    "date_assertion_failure": [
+      {
+        "label": "date_assertion_failure",
+        "question_id": "adv_004",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [
+          "tech_stack_grounded",
+          "metrics_grounded",
+          "no_fabricated_dates",
+          "scope_bounded"
+        ],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 1.0,
+          "faithfulness_score": 1.0,
+          "adversarial_success": true
+        }
+      },
+      {
+        "label": "date_assertion_failure",
+        "question_id": "adv_004",
+        "configuration": "agent_without_project_exists",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [
+          "tech_stack_grounded",
+          "metrics_grounded",
+          "no_fabricated_dates",
+          "scope_bounded"
+        ],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 1.0,
+          "faithfulness_score": 1.0,
+          "adversarial_success": true
+        }
+      },
+      {
+        "label": "date_assertion_failure",
+        "question_id": "adv_004",
+        "configuration": "agent_without_technology_grounded",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [
+          "metrics_grounded",
+          "no_fabricated_dates",
+          "scope_bounded"
+        ],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 1.0,
+          "faithfulness_score": 1.0,
+          "adversarial_success": true
+        }
+      },
+      {
+        "label": "date_assertion_failure",
+        "question_id": "adv_004",
+        "configuration": "agent_without_metrics_grounded",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [
+          "tech_stack_grounded",
+          "no_fabricated_dates",
+          "scope_bounded"
+        ],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 1.0,
+          "faithfulness_score": 1.0,
+          "adversarial_success": true
+        }
+      },
+      {
+        "label": "date_assertion_failure",
+        "question_id": "adv_004",
+        "configuration": "agent_without_scope_bounded",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [
+          "tech_stack_grounded",
+          "metrics_grounded",
+          "no_fabricated_dates"
+        ],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 1.0,
+          "faithfulness_score": 1.0,
+          "adversarial_success": true
+        }
+      }
+    ],
+    "failed_refusal": [
+      {
+        "label": "failed_refusal",
+        "question_id": "adv_001",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      },
+      {
+        "label": "failed_refusal",
+        "question_id": "adv_002",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      },
+      {
+        "label": "failed_refusal",
+        "question_id": "adv_003",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      },
+      {
+        "label": "failed_refusal",
+        "question_id": "adv_004",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      },
+      {
+        "label": "failed_refusal",
+        "question_id": "adv_005",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      }
+    ],
+    "incomplete_required_facts": [
+      {
+        "label": "incomplete_required_facts",
+        "question_id": "multi_001",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.5,
+          "faithfulness_score": 1.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "incomplete_required_facts",
+        "question_id": "multi_005",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.5,
+          "faithfulness_score": 1.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "incomplete_required_facts",
+        "question_id": "adv_001",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      },
+      {
+        "label": "incomplete_required_facts",
+        "question_id": "adv_002",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      },
+      {
+        "label": "incomplete_required_facts",
+        "question_id": "adv_003",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      }
+    ],
+    "metrics_assertion_failure": [
+      {
+        "label": "metrics_assertion_failure",
+        "question_id": "single_003",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "single_hop",
+        "retry_failed_assertions": [
+          "metrics_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "metrics_assertion_failure",
+        "question_id": "single_007",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "single_hop",
+        "retry_failed_assertions": [
+          "metrics_grounded",
+          "scope_bounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "metrics_assertion_failure",
+        "question_id": "single_009",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "single_hop",
+        "retry_failed_assertions": [
+          "metrics_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "metrics_assertion_failure",
+        "question_id": "single_010",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "single_hop",
+        "retry_failed_assertions": [
+          "metrics_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "metrics_assertion_failure",
+        "question_id": "multi_004",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [
+          "metrics_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      }
+    ],
+    "multi_hop_reasoning_gap": [
+      {
+        "label": "multi_hop_reasoning_gap",
+        "question_id": "multi_001",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.5,
+          "faithfulness_score": 1.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "multi_hop_reasoning_gap",
+        "question_id": "multi_005",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.5,
+          "faithfulness_score": 1.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "multi_hop_reasoning_gap",
+        "question_id": "multi_001",
+        "configuration": "agent_no_assertions",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.5,
+          "faithfulness_score": 1.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "multi_hop_reasoning_gap",
+        "question_id": "multi_005",
+        "configuration": "agent_no_assertions",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.5,
+          "faithfulness_score": 1.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "multi_hop_reasoning_gap",
+        "question_id": "multi_001",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [
+          "tech_stack_grounded",
+          "scope_bounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      }
+    ],
+    "project_assertion_failure": [
+      {
+        "label": "project_assertion_failure",
+        "question_id": "multi_005",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [
+          "project_exists"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "project_assertion_failure",
+        "question_id": "multi_009",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [
+          "project_exists"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "project_assertion_failure",
+        "question_id": "comp_007",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "comparative",
+        "retry_failed_assertions": [
+          "project_exists"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "project_assertion_failure",
+        "question_id": "adv_001",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [
+          "project_exists",
+          "tech_stack_grounded",
+          "metrics_grounded",
+          "scope_bounded"
+        ],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 1.0,
+          "faithfulness_score": 1.0,
+          "adversarial_success": true
+        }
+      },
+      {
+        "label": "project_assertion_failure",
+        "question_id": "adv_005",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [
+          "project_exists",
+          "tech_stack_grounded",
+          "metrics_grounded",
+          "scope_bounded"
+        ],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 1.0,
+          "faithfulness_score": 1.0,
+          "adversarial_success": true
+        }
+      }
+    ],
+    "scope_assertion_failure": [
+      {
+        "label": "scope_assertion_failure",
+        "question_id": "single_007",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "single_hop",
+        "retry_failed_assertions": [
+          "metrics_grounded",
+          "scope_bounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "scope_assertion_failure",
+        "question_id": "multi_001",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [
+          "tech_stack_grounded",
+          "scope_bounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "scope_assertion_failure",
+        "question_id": "adv_001",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [
+          "project_exists",
+          "tech_stack_grounded",
+          "metrics_grounded",
+          "scope_bounded"
+        ],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 1.0,
+          "faithfulness_score": 1.0,
+          "adversarial_success": true
+        }
+      },
+      {
+        "label": "scope_assertion_failure",
+        "question_id": "adv_002",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [
+          "tech_stack_grounded",
+          "metrics_grounded",
+          "scope_bounded"
+        ],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 1.0,
+          "faithfulness_score": 1.0,
+          "adversarial_success": true
+        }
+      },
+      {
+        "label": "scope_assertion_failure",
+        "question_id": "adv_003",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [
+          "tech_stack_grounded",
+          "metrics_grounded",
+          "scope_bounded"
+        ],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 1.0,
+          "faithfulness_score": 1.0,
+          "adversarial_success": true
+        }
+      }
+    ],
+    "technology_assertion_failure": [
+      {
+        "label": "technology_assertion_failure",
+        "question_id": "multi_001",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [
+          "tech_stack_grounded",
+          "scope_bounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "technology_assertion_failure",
+        "question_id": "multi_002",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [
+          "tech_stack_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "technology_assertion_failure",
+        "question_id": "multi_003",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [
+          "tech_stack_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "technology_assertion_failure",
+        "question_id": "multi_007",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [
+          "tech_stack_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "technology_assertion_failure",
+        "question_id": "multi_010",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [
+          "tech_stack_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      }
+    ],
+    "ungrounded_answer": [
+      {
+        "label": "ungrounded_answer",
+        "question_id": "adv_001",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      },
+      {
+        "label": "ungrounded_answer",
+        "question_id": "adv_002",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      },
+      {
+        "label": "ungrounded_answer",
+        "question_id": "adv_003",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      },
+      {
+        "label": "ungrounded_answer",
+        "question_id": "adv_004",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      },
+      {
+        "label": "ungrounded_answer",
+        "question_id": "adv_005",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      }
+    ],
+    "unnecessary_refusal_candidate": [
+      {
+        "label": "unnecessary_refusal_candidate",
+        "question_id": "single_003",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "single_hop",
+        "retry_failed_assertions": [
+          "metrics_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "unnecessary_refusal_candidate",
+        "question_id": "single_007",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "single_hop",
+        "retry_failed_assertions": [
+          "metrics_grounded",
+          "scope_bounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "unnecessary_refusal_candidate",
+        "question_id": "single_009",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "single_hop",
+        "retry_failed_assertions": [
+          "metrics_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "unnecessary_refusal_candidate",
+        "question_id": "single_010",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "single_hop",
+        "retry_failed_assertions": [
+          "metrics_grounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      },
+      {
+        "label": "unnecessary_refusal_candidate",
+        "question_id": "multi_001",
+        "configuration": "agent_with_assertions",
+        "run": 1,
+        "category": "multi_hop",
+        "retry_failed_assertions": [
+          "tech_stack_grounded",
+          "scope_bounded"
+        ],
+        "safe_fallback": true,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": null
+        }
+      }
+    ],
+    "unsupported_claim_leaked": [
+      {
+        "label": "unsupported_claim_leaked",
+        "question_id": "adv_001",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      },
+      {
+        "label": "unsupported_claim_leaked",
+        "question_id": "adv_002",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      },
+      {
+        "label": "unsupported_claim_leaked",
+        "question_id": "adv_003",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      },
+      {
+        "label": "unsupported_claim_leaked",
+        "question_id": "adv_004",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      },
+      {
+        "label": "unsupported_claim_leaked",
+        "question_id": "adv_005",
+        "configuration": "pipeline",
+        "run": 1,
+        "category": "adversarial",
+        "retry_failed_assertions": [],
+        "safe_fallback": false,
+        "scores": {
+          "required_fact_score": 0.0,
+          "faithfulness_score": 0.0,
+          "adversarial_success": false
+        }
+      }
+    ]
+  },
+  "false_positives": [
+    {
+      "question_id": "multi_002",
+      "category": "multi_hop",
+      "suspected_assertions": [
+        "tech_stack_grounded"
+      ],
+      "reason": "No-assertion answer scored fully while assertion-gated answer regressed."
+    },
+    {
+      "question_id": "multi_003",
+      "category": "multi_hop",
+      "suspected_assertions": [
+        "tech_stack_grounded"
+      ],
+      "reason": "No-assertion answer scored fully while assertion-gated answer regressed."
+    },
+    {
+      "question_id": "multi_004",
+      "category": "multi_hop",
+      "suspected_assertions": [
+        "metrics_grounded"
+      ],
+      "reason": "No-assertion answer scored fully while assertion-gated answer regressed."
+    },
+    {
+      "question_id": "multi_007",
+      "category": "multi_hop",
+      "suspected_assertions": [
+        "tech_stack_grounded"
+      ],
+      "reason": "No-assertion answer scored fully while assertion-gated answer regressed."
+    },
+    {
+      "question_id": "multi_009",
+      "category": "multi_hop",
+      "suspected_assertions": [
+        "project_exists"
+      ],
+      "reason": "No-assertion answer scored fully while assertion-gated answer regressed."
+    },
+    {
+      "question_id": "multi_010",
+      "category": "multi_hop",
+      "suspected_assertions": [
+        "tech_stack_grounded"
+      ],
+      "reason": "No-assertion answer scored fully while assertion-gated answer regressed."
+    },
+    {
+      "question_id": "comp_002",
+      "category": "comparative",
+      "suspected_assertions": [
+        "tech_stack_grounded"
+      ],
+      "reason": "No-assertion answer scored fully while assertion-gated answer regressed."
+    },
+    {
+      "question_id": "comp_003",
+      "category": "comparative",
+      "suspected_assertions": [
+        "tech_stack_grounded"
+      ],
+      "reason": "No-assertion answer scored fully while assertion-gated answer regressed."
+    },
+    {
+      "question_id": "comp_005",
+      "category": "comparative",
+      "suspected_assertions": [
+        "metrics_grounded"
+      ],
+      "reason": "No-assertion answer scored fully while assertion-gated answer regressed."
+    },
+    {
+      "question_id": "comp_006",
+      "category": "comparative",
+      "suspected_assertions": [
+        "tech_stack_grounded"
+      ],
+      "reason": "No-assertion answer scored fully while assertion-gated answer regressed."
+    },
+    {
+      "question_id": "comp_007",
+      "category": "comparative",
+      "suspected_assertions": [
+        "project_exists"
+      ],
+      "reason": "No-assertion answer scored fully while assertion-gated answer regressed."
+    },
+    {
+      "question_id": "comp_008",
+      "category": "comparative",
+      "suspected_assertions": [
+        "metrics_grounded"
+      ],
+      "reason": "No-assertion answer scored fully while assertion-gated answer regressed."
+    }
+  ],
+  "false_negatives": [],
+  "correction_failures": [
+    {
+      "label": "correction_failure",
+      "question_id": "single_003",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "single_hop",
+      "retry_failed_assertions": [
+        "metrics_grounded"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "single_007",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "single_hop",
+      "retry_failed_assertions": [
+        "metrics_grounded",
+        "scope_bounded"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "single_009",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "single_hop",
+      "retry_failed_assertions": [
+        "metrics_grounded"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "single_010",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "single_hop",
+      "retry_failed_assertions": [
+        "metrics_grounded"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "multi_001",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "multi_hop",
+      "retry_failed_assertions": [
+        "tech_stack_grounded",
+        "scope_bounded"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "multi_002",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "multi_hop",
+      "retry_failed_assertions": [
+        "tech_stack_grounded"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "multi_003",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "multi_hop",
+      "retry_failed_assertions": [
+        "tech_stack_grounded"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "multi_004",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "multi_hop",
+      "retry_failed_assertions": [
+        "metrics_grounded"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "multi_005",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "multi_hop",
+      "retry_failed_assertions": [
+        "project_exists"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "multi_007",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "multi_hop",
+      "retry_failed_assertions": [
+        "tech_stack_grounded"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "multi_009",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "multi_hop",
+      "retry_failed_assertions": [
+        "project_exists"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "multi_010",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "multi_hop",
+      "retry_failed_assertions": [
+        "tech_stack_grounded"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "comp_002",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "comparative",
+      "retry_failed_assertions": [
+        "tech_stack_grounded"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "comp_003",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "comparative",
+      "retry_failed_assertions": [
+        "tech_stack_grounded"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "comp_005",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "comparative",
+      "retry_failed_assertions": [
+        "metrics_grounded"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "comp_006",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "comparative",
+      "retry_failed_assertions": [
+        "tech_stack_grounded"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "comp_007",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "comparative",
+      "retry_failed_assertions": [
+        "project_exists"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "comp_008",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "comparative",
+      "retry_failed_assertions": [
+        "metrics_grounded"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "single_003",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "category": "single_hop",
+      "retry_failed_assertions": [
+        "metrics_grounded"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    },
+    {
+      "label": "correction_failure",
+      "question_id": "single_007",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "category": "single_hop",
+      "retry_failed_assertions": [
+        "metrics_grounded",
+        "scope_bounded"
+      ],
+      "safe_fallback": true,
+      "scores": {
+        "required_fact_score": 0.0,
+        "faithfulness_score": 0.0,
+        "adversarial_success": null
+      }
+    }
+  ],
+  "review_sample": [
+    {
+      "question_id": "adv_001",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "project_assertion_failure",
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "What framework did I use in my Java Fraud Detection project?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_001",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "What framework did I use in my Java Fraud Detection project?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_001",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "project_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "What framework did I use in my Java Fraud Detection project?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_001",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "project_assertion_failure",
+        "technology_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "What framework did I use in my Java Fraud Detection project?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_001",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "project_assertion_failure",
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "What framework did I use in my Java Fraud Detection project?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_001",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "project_assertion_failure",
+        "technology_assertion_failure",
+        "metrics_assertion_failure"
+      ],
+      "question": "What framework did I use in my Java Fraud Detection project?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_002",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "Why did I choose Kafka for the Retail Data Platform?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_002",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "Why did I choose Kafka for the Retail Data Platform?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_002",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "Why did I choose Kafka for the Retail Data Platform?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_002",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "technology_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "Why did I choose Kafka for the Retail Data Platform?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_002",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "Why did I choose Kafka for the Retail Data Platform?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_002",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure"
+      ],
+      "question": "Why did I choose Kafka for the Retail Data Platform?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_003",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "What 98% accuracy did the Retail Data Platform achieve?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_003",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "What 98% accuracy did the Retail Data Platform achieve?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_003",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "What 98% accuracy did the Retail Data Platform achieve?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_003",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "technology_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "What 98% accuracy did the Retail Data Platform achieve?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_003",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "What 98% accuracy did the Retail Data Platform achieve?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_003",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure"
+      ],
+      "question": "What 98% accuracy did the Retail Data Platform achieve?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_004",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "date_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "What improvements did I make to the crime pipeline in 2021?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_004",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "date_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "What improvements did I make to the crime pipeline in 2021?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_004",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "metrics_assertion_failure",
+        "date_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "What improvements did I make to the crime pipeline in 2021?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_004",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "technology_assertion_failure",
+        "date_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "What improvements did I make to the crime pipeline in 2021?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_004",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "What improvements did I make to the crime pipeline in 2021?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_004",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "date_assertion_failure"
+      ],
+      "question": "What improvements did I make to the crime pipeline in 2021?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_005",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "project_assertion_failure",
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "How did the Breast Cancer Survival project deploy with Docker?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_005",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "How did the Breast Cancer Survival project deploy with Docker?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_005",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "project_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "How did the Breast Cancer Survival project deploy with Docker?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_005",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "project_assertion_failure",
+        "technology_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "How did the Breast Cancer Survival project deploy with Docker?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_005",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "project_assertion_failure",
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ],
+      "question": "How did the Breast Cancer Survival project deploy with Docker?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    },
+    {
+      "question_id": "adv_005",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "category": "adversarial",
+      "labels": [
+        "project_assertion_failure",
+        "technology_assertion_failure",
+        "metrics_assertion_failure"
+      ],
+      "question": "How did the Breast Cancer Survival project deploy with Docker?",
+      "answer": "The indexed documentation does not contain support for that premise, so I cannot verify an answer."
+    }
+  ],
+  "failures": [
+    {
+      "question_id": "multi_001",
+      "configuration": "pipeline",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_005",
+      "configuration": "pipeline",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "adv_001",
+      "configuration": "pipeline",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_002",
+      "configuration": "pipeline",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_003",
+      "configuration": "pipeline",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_004",
+      "configuration": "pipeline",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_005",
+      "configuration": "pipeline",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_006",
+      "configuration": "pipeline",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_007",
+      "configuration": "pipeline",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_008",
+      "configuration": "pipeline",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_009",
+      "configuration": "pipeline",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_010",
+      "configuration": "pipeline",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "multi_001",
+      "configuration": "agent_no_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_005",
+      "configuration": "agent_no_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "adv_001",
+      "configuration": "agent_no_assertions",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_002",
+      "configuration": "agent_no_assertions",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_003",
+      "configuration": "agent_no_assertions",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_004",
+      "configuration": "agent_no_assertions",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_005",
+      "configuration": "agent_no_assertions",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_006",
+      "configuration": "agent_no_assertions",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_007",
+      "configuration": "agent_no_assertions",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_008",
+      "configuration": "agent_no_assertions",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_009",
+      "configuration": "agent_no_assertions",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "adv_010",
+      "configuration": "agent_no_assertions",
+      "run": 1,
+      "labels": [
+        "failed_refusal",
+        "unsupported_claim_leaked",
+        "incomplete_required_facts",
+        "ungrounded_answer"
+      ]
+    },
+    {
+      "question_id": "single_003",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_007",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_009",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_010",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "multi_001",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "scope_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_002",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_003",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_004",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_005",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "project_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_007",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_009",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "project_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_010",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_002",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_003",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_005",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_006",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_007",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "project_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_008",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "adv_001",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "project_assertion_failure",
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_002",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_003",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_004",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "date_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_005",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "project_assertion_failure",
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_006",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_007",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_008",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_009",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_010",
+      "configuration": "agent_with_assertions",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_003",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_007",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_009",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_010",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "multi_001",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "scope_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_002",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_003",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_004",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_005",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_007",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_010",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_002",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_003",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_005",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_006",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_008",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "adv_001",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_002",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_003",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_004",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "date_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_005",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_006",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_007",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_008",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_009",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_010",
+      "configuration": "agent_without_project_exists",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_003",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_007",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_009",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_010",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "multi_001",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "scope_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_004",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_005",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "project_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_009",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "project_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_005",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_007",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "project_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_008",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "adv_001",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "project_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_002",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_003",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_004",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "metrics_assertion_failure",
+        "date_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_005",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "project_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_006",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_007",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_008",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_009",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_010",
+      "configuration": "agent_without_technology_grounded",
+      "run": 1,
+      "labels": [
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_007",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "multi_001",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "scope_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_002",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_003",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_005",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "project_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_007",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_009",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "project_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_010",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_002",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_003",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_006",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_007",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "project_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "adv_001",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "project_assertion_failure",
+        "technology_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_002",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_003",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_004",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "date_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_005",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "project_assertion_failure",
+        "technology_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_006",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_007",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_008",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_009",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_010",
+      "configuration": "agent_without_metrics_grounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_003",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_007",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_009",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_010",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "multi_001",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "scope_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_002",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_003",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_004",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_005",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "project_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_007",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_009",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "project_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_010",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_002",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_003",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_005",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_006",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_007",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "project_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_008",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "adv_001",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "project_assertion_failure",
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_002",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_003",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_004",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_005",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "project_assertion_failure",
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_006",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_007",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_008",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_009",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_010",
+      "configuration": "agent_without_dates_grounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "scope_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_003",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_007",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_009",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "single_010",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "multi_001",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_002",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_003",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_004",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_005",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "project_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_007",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_009",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "project_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "multi_010",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "multi_hop_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_002",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_003",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_005",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_006",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "technology_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_007",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "project_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "comp_008",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "incomplete_required_facts",
+        "ungrounded_answer",
+        "unnecessary_refusal_candidate",
+        "correction_failure",
+        "metrics_assertion_failure",
+        "comparative_reasoning_gap"
+      ]
+    },
+    {
+      "question_id": "adv_001",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "project_assertion_failure",
+        "technology_assertion_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_002",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_003",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_004",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure",
+        "date_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_005",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "project_assertion_failure",
+        "technology_assertion_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_006",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_007",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_008",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_009",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure"
+      ]
+    },
+    {
+      "question_id": "adv_010",
+      "configuration": "agent_without_scope_bounded",
+      "run": 1,
+      "labels": [
+        "technology_assertion_failure",
+        "metrics_assertion_failure"
+      ]
+    }
+  ]
+}

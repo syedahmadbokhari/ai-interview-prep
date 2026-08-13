@@ -35,6 +35,7 @@ class AnswerResult:
     answer: str
     grounded: bool  # False => the no-result path fired
     results: list[SearchResult]
+    token_usage: dict[str, int] | None = None
 
     @property
     def sources(self) -> list[str]:
@@ -65,7 +66,13 @@ class RAGPipeline:
                 question=question, answer=NO_RESULT_ANSWER, grounded=False, results=[]
             )
         answer = self.generator.generate(question, results)
-        return AnswerResult(question=question, answer=answer, grounded=True, results=results)
+        return AnswerResult(
+            question=question,
+            answer=answer,
+            grounded=True,
+            results=results,
+            token_usage=getattr(self.generator, "last_token_usage", {}),
+        )
 
 
 def load_pipeline(index_dir: Path, generator=None) -> RAGPipeline:

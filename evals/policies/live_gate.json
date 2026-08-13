@@ -1,0 +1,46 @@
+{
+  "name": "live_gate",
+  "description": "Live model gate. Requires a deliberately approved live baseline; no absolute live quality thresholds are claimed before empirical baseline approval.",
+  "hard_failures": {
+    "expected_dataset_size": 43,
+    "required_configurations": [
+      "pipeline",
+      "agent_no_assertions",
+      "agent_with_assertions"
+    ]
+  },
+  "compatibility": {
+    "required_equal": [
+      "dataset_version",
+      "scoring_version",
+      "model"
+    ]
+  },
+  "regression_limits": [
+    {
+      "metric": "pipeline.fact_coverage_mean",
+      "max_regression": 0.03
+    },
+    {
+      "metric": "agent_no_assertions.fact_coverage_mean",
+      "max_regression": 0.03
+    },
+    {
+      "metric": "agent_with_assertions.faithfulness_mean",
+      "max_regression": 0.03
+    },
+    {
+      "metric": "agent_with_assertions.adversarial_refusal_rate",
+      "max_regression": 0.05
+    }
+  ],
+  "absolute_minimums": [],
+  "cross_config_rules": [
+    {
+      "left": "agent_with_assertions.adversarial_refusal_rate",
+      "operator": ">=",
+      "right": "agent_no_assertions.adversarial_refusal_rate",
+      "tolerance": 0.02
+    }
+  ]
+}

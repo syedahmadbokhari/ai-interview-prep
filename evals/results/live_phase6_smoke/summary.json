@@ -1,0 +1,141 @@
+{
+  "metadata": {
+    "dataset_version": "interview_prep_v1",
+    "dataset_path": "evals\\datasets\\interview_prep_v1.jsonl",
+    "timestamp": "2026-08-12T23:49:53.180954+00:00",
+    "mode": "live",
+    "model": "claude-sonnet-4-6",
+    "configurations": [
+      "agent_no_assertions",
+      "agent_with_assertions",
+      "pipeline"
+    ],
+    "runs": 1,
+    "temperature": 0,
+    "retrieval_settings": {
+      "index_dir": "index"
+    },
+    "disabled_assertions": [],
+    "git_commit": "d478bbe96f1e666e137149b500469df5427983bf",
+    "python_version": "3.11.9",
+    "dataset_size": 2,
+    "scoring_version": "1"
+  },
+  "aggregates": {
+    "by_configuration": {
+      "agent_no_assertions": {
+        "count": 2,
+        "fact_coverage_mean": 1.0,
+        "faithfulness_mean": 0.0,
+        "project_entity_mean": 1.0,
+        "multi_hop_mean": null,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 16502.704999999998,
+        "latency_ms_std": 6500.554999999999,
+        "tool_calls_mean": 3,
+        "model_calls_mean": 4,
+        "retry_count_mean": 0,
+        "correction_rate": 0.0,
+        "safe_fallback_rate": 0.0
+      },
+      "agent_with_assertions": {
+        "count": 2,
+        "fact_coverage_mean": 0.0,
+        "faithfulness_mean": 0.0,
+        "project_entity_mean": 0.0,
+        "multi_hop_mean": null,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 24570.07,
+        "latency_ms_std": 13342.879999999997,
+        "tool_calls_mean": 4.5,
+        "model_calls_mean": 5,
+        "retry_count_mean": 1,
+        "correction_rate": 1.0,
+        "safe_fallback_rate": 1.0
+      },
+      "pipeline": {
+        "count": 2,
+        "fact_coverage_mean": 1.0,
+        "faithfulness_mean": 0.5,
+        "project_entity_mean": 1.0,
+        "multi_hop_mean": null,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 663.28,
+        "latency_ms_std": 352.58000000000004,
+        "tool_calls_mean": 0,
+        "model_calls_mean": 1,
+        "retry_count_mean": 0,
+        "correction_rate": 0.0,
+        "safe_fallback_rate": 0.0
+      }
+    },
+    "by_category": {
+      "single_hop": {
+        "count": 6,
+        "fact_coverage_mean": 0.6666666666666666,
+        "faithfulness_mean": 0.16666666666666666,
+        "project_entity_mean": 0.6666666666666666,
+        "multi_hop_mean": null,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 13912.018333333333,
+        "latency_ms_std": 13118.03802426442,
+        "tool_calls_mean": 2.5,
+        "model_calls_mean": 3.3333333333333335,
+        "retry_count_mean": 0.3333333333333333,
+        "correction_rate": 0.3333333333333333,
+        "safe_fallback_rate": 0.3333333333333333
+      }
+    },
+    "assertions": {
+      "total_run": 16,
+      "total_passed": 10,
+      "total_failed": 6,
+      "pass_rate": 0.625,
+      "by_type": {
+        "metrics_grounded": {
+          "run": 2,
+          "passed": 0,
+          "failed": 2,
+          "pass_rate": 0.0,
+          "failure_rate": 1.0
+        },
+        "no_fabricated_dates": {
+          "run": 2,
+          "passed": 2,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "failure_rate": 0.0
+        },
+        "project_exists": {
+          "run": 4,
+          "passed": 4,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "failure_rate": 0.0
+        },
+        "scope_bounded": {
+          "run": 4,
+          "passed": 4,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "failure_rate": 0.0
+        },
+        "tech_stack_grounded": {
+          "run": 4,
+          "passed": 0,
+          "failed": 4,
+          "pass_rate": 0.0,
+          "failure_rate": 1.0
+        }
+      },
+      "retry_causes": {
+        "metrics_grounded": 1,
+        "tech_stack_grounded": 2
+      }
+    }
+  }
+}

@@ -1,8 +1,10 @@
 sentence-transformers>=3.0
 faiss-cpu>=1.8
 groq>=0.13
+anthropic>=0.40
 numpy
 pytest>=8.0
+-e ./packages/rag_assertions
 
 # Phase 2 — API layer
 fastapi>=0.115

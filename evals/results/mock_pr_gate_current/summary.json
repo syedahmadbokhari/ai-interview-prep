@@ -1,0 +1,192 @@
+{
+  "metadata": {
+    "dataset_version": "interview_prep_v1",
+    "dataset_path": "evals\\datasets\\interview_prep_v1.jsonl",
+    "timestamp": "2026-08-12T22:53:33.696690+00:00",
+    "mode": "mock",
+    "model": "claude-sonnet-4-6",
+    "configurations": [
+      "agent_no_assertions",
+      "agent_with_assertions",
+      "pipeline"
+    ],
+    "runs": 1,
+    "temperature": 0,
+    "retrieval_settings": {
+      "index_dir": "index"
+    },
+    "disabled_assertions": [],
+    "git_commit": "d478bbe96f1e666e137149b500469df5427983bf",
+    "python_version": "3.11.9",
+    "dataset_size": 43,
+    "scoring_version": "1"
+  },
+  "aggregates": {
+    "by_configuration": {
+      "agent_no_assertions": {
+        "count": 43,
+        "fact_coverage_mean": 0.7441860465116279,
+        "faithfulness_mean": 0.7674418604651163,
+        "project_entity_mean": 0.5813953488372093,
+        "multi_hop_mean": 0.9166666666666666,
+        "comparative_mean": 1.0,
+        "adversarial_refusal_rate": 0.0,
+        "latency_ms_mean": 33.50325581395349,
+        "latency_ms_std": 16.93965235646278,
+        "tool_calls_mean": 1.4186046511627908,
+        "model_calls_mean": 2,
+        "retry_count_mean": 0,
+        "correction_rate": 0.0,
+        "safe_fallback_rate": 0.0
+      },
+      "agent_with_assertions": {
+        "count": 43,
+        "fact_coverage_mean": 0.5813953488372093,
+        "faithfulness_mean": 0.5813953488372093,
+        "project_entity_mean": 0.4883720930232558,
+        "multi_hop_mean": 0.3333333333333333,
+        "comparative_mean": 0.3333333333333333,
+        "adversarial_refusal_rate": 1.0,
+        "latency_ms_mean": 57.78790697674419,
+        "latency_ms_std": 23.39955421540587,
+        "tool_calls_mean": 1.4186046511627908,
+        "model_calls_mean": 2.6511627906976742,
+        "retry_count_mean": 0.6511627906976745,
+        "correction_rate": 0.6511627906976745,
+        "safe_fallback_rate": 0.4186046511627907
+      },
+      "pipeline": {
+        "count": 43,
+        "fact_coverage_mean": 0.7441860465116279,
+        "faithfulness_mean": 0.7674418604651163,
+        "project_entity_mean": 0.5813953488372093,
+        "multi_hop_mean": 0.9166666666666666,
+        "comparative_mean": 1.0,
+        "adversarial_refusal_rate": 0.0,
+        "latency_ms_mean": 0.0034883720930232558,
+        "latency_ms_std": 0.009616778199132713,
+        "tool_calls_mean": 0,
+        "model_calls_mean": 0,
+        "retry_count_mean": 0,
+        "correction_rate": 0.0,
+        "safe_fallback_rate": 0.0
+      }
+    },
+    "by_category": {
+      "adversarial": {
+        "count": 30,
+        "fact_coverage_mean": 0.3333333333333333,
+        "faithfulness_mean": 0.3333333333333333,
+        "project_entity_mean": 0.3333333333333333,
+        "multi_hop_mean": null,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": 0.3333333333333333,
+        "latency_ms_mean": 28.516666666666666,
+        "latency_ms_std": 27.462531848967522,
+        "tool_calls_mean": 0.6666666666666666,
+        "model_calls_mean": 1.6666666666666667,
+        "retry_count_mean": 0.3333333333333333,
+        "correction_rate": 0.3333333333333333,
+        "safe_fallback_rate": 0.0
+      },
+      "comparative": {
+        "count": 27,
+        "fact_coverage_mean": 0.7777777777777778,
+        "faithfulness_mean": 0.7777777777777778,
+        "project_entity_mean": 0.7777777777777778,
+        "multi_hop_mean": null,
+        "comparative_mean": 0.7777777777777778,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 35.66148148148148,
+        "latency_ms_std": 33.10825551113193,
+        "tool_calls_mean": 1.2592592592592593,
+        "model_calls_mean": 1.5555555555555556,
+        "retry_count_mean": 0.2222222222222222,
+        "correction_rate": 0.2222222222222222,
+        "safe_fallback_rate": 0.2222222222222222
+      },
+      "multi_hop": {
+        "count": 36,
+        "fact_coverage_mean": 0.7222222222222222,
+        "faithfulness_mean": 0.7777777777777778,
+        "project_entity_mean": 0.7777777777777778,
+        "multi_hop_mean": 0.7222222222222222,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 33.729166666666664,
+        "latency_ms_std": 33.02129198419643,
+        "tool_calls_mean": 1.2222222222222223,
+        "model_calls_mean": 1.5555555555555556,
+        "retry_count_mean": 0.2222222222222222,
+        "correction_rate": 0.2222222222222222,
+        "safe_fallback_rate": 0.2222222222222222
+      },
+      "single_hop": {
+        "count": 36,
+        "fact_coverage_mean": 0.8888888888888888,
+        "faithfulness_mean": 0.8888888888888888,
+        "project_entity_mean": 0.3333333333333333,
+        "multi_hop_mean": null,
+        "comparative_mean": null,
+        "adversarial_refusal_rate": null,
+        "latency_ms_mean": 24.807222222222222,
+        "latency_ms_std": 20.017843513990645,
+        "tool_calls_mean": 0.6666666666666666,
+        "model_calls_mean": 1.4444444444444444,
+        "retry_count_mean": 0.1111111111111111,
+        "correction_rate": 0.1111111111111111,
+        "safe_fallback_rate": 0.1111111111111111
+      }
+    },
+    "assertions": {
+      "total_run": 152,
+      "total_passed": 79,
+      "total_failed": 73,
+      "pass_rate": 0.5197368421052632,
+      "by_type": {
+        "metrics_grounded": {
+          "run": 26,
+          "passed": 2,
+          "failed": 24,
+          "pass_rate": 0.07692307692307693,
+          "failure_rate": 0.9230769230769231
+        },
+        "no_fabricated_dates": {
+          "run": 3,
+          "passed": 2,
+          "failed": 1,
+          "pass_rate": 0.6666666666666666,
+          "failure_rate": 0.3333333333333333
+        },
+        "project_exists": {
+          "run": 52,
+          "passed": 44,
+          "failed": 8,
+          "pass_rate": 0.8461538461538461,
+          "failure_rate": 0.15384615384615385
+        },
+        "scope_bounded": {
+          "run": 40,
+          "passed": 26,
+          "failed": 14,
+          "pass_rate": 0.65,
+          "failure_rate": 0.35
+        },
+        "tech_stack_grounded": {
+          "run": 31,
+          "passed": 5,
+          "failed": 26,
+          "pass_rate": 0.16129032258064516,
+          "failure_rate": 0.8387096774193549
+        }
+      },
+      "retry_causes": {
+        "metrics_grounded": 17,
+        "no_fabricated_dates": 1,
+        "project_exists": 5,
+        "scope_bounded": 12,
+        "tech_stack_grounded": 18
+      }
+    }
+  }
+}

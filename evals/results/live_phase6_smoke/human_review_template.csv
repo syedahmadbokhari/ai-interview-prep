@@ -1,0 +1,7 @@
+question_id,configuration,run,correctness_0_2,completeness_0_2,relevance_0_2,clarity_0_2,review_notes
+single_001,agent_no_assertions,1,,,,,
+single_002,agent_no_assertions,1,,,,,
+single_001,agent_with_assertions,1,,,,,
+single_002,agent_with_assertions,1,,,,,
+single_001,pipeline,1,,,,,
+single_002,pipeline,1,,,,,

@@ -43,5 +43,11 @@ class AnswerResponse(BaseModel):
     sources: list[SourceInfo]
 
 
+class AgentAnswerResponse(BaseModel):
+    question: str
+    answer: str
+    trace_path: str
+
+
 class ErrorResponse(BaseModel):
     detail: str

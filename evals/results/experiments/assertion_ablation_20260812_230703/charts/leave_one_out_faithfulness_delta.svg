@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="266" viewBox="0 0 900 266">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="20" y="28" font-family="Arial" font-size="18" fill="#111111">Leave-one-out faithfulness delta</text>
+<text x="20" y="66" font-family="Arial" font-size="12" fill="#111111">agent_without_dates_grounded</text>
+<rect x="260" y="46" width="0" height="28" fill="#2f6f73"/>
+<text x="268" y="66" font-family="Arial" font-size="12" fill="#111111">0.000</text>
+<text x="20" y="104" font-family="Arial" font-size="12" fill="#111111">agent_without_metrics_grounded</text>
+<rect x="260" y="84" width="78" height="28" fill="#2f6f73"/>
+<text x="346" y="104" font-family="Arial" font-size="12" fill="#111111">0.140</text>
+<text x="20" y="142" font-family="Arial" font-size="12" fill="#111111">agent_without_project_exists</text>
+<rect x="260" y="122" width="39" height="28" fill="#2f6f73"/>
+<text x="307" y="142" font-family="Arial" font-size="12" fill="#111111">0.070</text>
+<text x="20" y="180" font-family="Arial" font-size="12" fill="#111111">agent_without_scope_bounded</text>
+<rect x="260" y="160" width="0" height="28" fill="#2f6f73"/>
+<text x="268" y="180" font-family="Arial" font-size="12" fill="#111111">0.000</text>
+<text x="20" y="218" font-family="Arial" font-size="12" fill="#111111">agent_without_technology_grounded</text>
+<rect x="260" y="198" width="91" height="28" fill="#2f6f73"/>
+<text x="359" y="218" font-family="Arial" font-size="12" fill="#111111">0.163</text>
+</svg>

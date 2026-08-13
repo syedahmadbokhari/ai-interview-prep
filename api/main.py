@@ -36,6 +36,7 @@ from slowapi.util import get_remote_address
 
 from .auth import create_access_token, get_current_user, verify_password
 from .schemas import (
+    AgentAnswerResponse,
     AnswerResponse,
     ErrorResponse,
     LoginRequest,
@@ -65,6 +66,13 @@ def _default_pipeline():
 def get_pipeline():
     """Dependency seam — tests override this with a fake pipeline."""
     return _default_pipeline()
+
+
+def get_agent():
+    """Dependency seam — tests override this with a fake agent."""
+    from agent.agent import ReActAgent
+
+    return ReActAgent(_default_pipeline().store)
 
 
 def create_app() -> FastAPI:
@@ -147,6 +155,38 @@ def create_app() -> FastAPI:
                 SourceInfo(citation=r.chunk.citation(), score=round(r.score, 3))
                 for r in result.results
             ],
+        )
+
+    @app.post(
+        "/ask-agent",
+        response_model=AgentAnswerResponse,
+        responses={
+            401: {"model": ErrorResponse},
+            429: {"model": ErrorResponse},
+            502: {"model": ErrorResponse},
+        },
+    )
+    @limiter.limit(lambda: get_settings().rate_limit)
+    def ask_agent(
+        request: Request,
+        body: QuestionRequest,
+        user: str = Depends(get_current_user),
+        agent=Depends(get_agent),
+    ):
+        try:
+            result = agent.ask(body.question)
+        except HTTPException:
+            raise
+        except Exception:
+            logger.exception("Agent failure for question: %r", body.question)
+            raise HTTPException(
+                status_code=status.HTTP_502_BAD_GATEWAY,
+                detail="The agent service is temporarily unavailable. Try again shortly.",
+            )
+        return AgentAnswerResponse(
+            question=result.question,
+            answer=result.answer,
+            trace_path=result.trace_path,
         )
 
     return app

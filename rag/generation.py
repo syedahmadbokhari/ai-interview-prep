@@ -68,6 +68,7 @@ class GroqGenerator:
                 "and set it as an environment variable."
             )
         self._client = Groq(api_key=key)
+        self.last_token_usage: dict[str, int] = {}
 
     def generate(self, question: str, results: list[SearchResult]) -> str:
         context = build_context(results)
@@ -83,4 +84,13 @@ class GroqGenerator:
                 {"role": "user", "content": user_message},
             ],
         )
+        usage = getattr(response, "usage", None)
+        prompt_tokens = int(getattr(usage, "prompt_tokens", 0) or 0)
+        completion_tokens = int(getattr(usage, "completion_tokens", 0) or 0)
+        total_tokens = int(getattr(usage, "total_tokens", 0) or 0)
+        self.last_token_usage = {
+            "input_tokens": prompt_tokens,
+            "output_tokens": completion_tokens,
+            "total_tokens": total_tokens or prompt_tokens + completion_tokens,
+        }
         return response.choices[0].message.content.strip()

@@ -1,0 +1,9 @@
+name,adversarial_refusal_rate,comparative_mean,correction_rate,count,fact_coverage_mean,faithfulness_mean,latency_ms_mean,latency_ms_std,model_calls_mean,multi_hop_mean,project_entity_mean,retry_count_mean,safe_fallback_rate,tool_calls_mean
+agent_no_assertions,,,0.0,2,1.0,1.0,22.4,3.4399999999999995,2,,0.5,0,0.0,1
+agent_with_assertions,,,0.0,2,1.0,1.0,26.380000000000003,2.4399999999999995,2,,0.5,0,0.0,1
+agent_without_dates_grounded,,,0.0,2,1.0,1.0,28.115000000000002,2.735000000000001,2,,0.5,0,0.0,1
+agent_without_metrics_grounded,,,0.0,2,1.0,1.0,25.07,0.7599999999999998,2,,0.5,0,0.0,1
+agent_without_project_exists,,,0.0,2,1.0,1.0,28.85,6.01,2,,0.5,0,0.0,1
+agent_without_scope_bounded,,,0.0,2,1.0,1.0,23.045,0.375,2,,0.5,0,0.0,1
+agent_without_technology_grounded,,,0.0,2,1.0,1.0,35.06,17.4,2,,0.5,0,0.0,1
+pipeline,,,0.0,2,1.0,1.0,0.0,0.0,0,,0.5,0,0.0,0

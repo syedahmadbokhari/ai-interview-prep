@@ -2,6 +2,13 @@
 .venv/
 __pycache__/
 .pytest_cache/
+.ruff_cache/
 index/
 *.pyc
 .claude/
+tmp/
+output/agent_traces/
+frontend/node_modules/
+frontend/dist/
+packages/rag_assertions/dist/
+packages/rag_assertions/*.egg-info/
